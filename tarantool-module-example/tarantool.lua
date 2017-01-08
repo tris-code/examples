@@ -1,6 +1,6 @@
 #!/usr/bin/env tarantool
 
-local moduleName = 'Module'
+local moduleName = 'module'
 package.cpath =
     '.build/debug/lib'..moduleName..'.so;.build/debug/lib'..moduleName..'.dylib;'..
     '.build/release/lib'..moduleName..'.so;.build/release/lib'..moduleName..'.dylib;'..
