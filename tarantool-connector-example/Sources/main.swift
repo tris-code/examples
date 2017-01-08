@@ -14,12 +14,16 @@ do {
         exit(0)
     }
 
-    var result = try test.select(.eq, keys: [3])
-    print(result) // prints [[3, "baz"]]
+    print(try test.select(.eq, keys: [3]))
+    // [[3, "baz"]]
+
+    print(try test.select(.all))
+    // first run: [[1, "foo"], [2, "bar"], [3, "baz"]]
+    // second run: [[42, "Answer to the Ultimate Question of Life, The Universe, and Everything"], [1, "foo"], ...]
 
     try test.replace([42, "Answer to the Ultimate Question of Life, The Universe, and Everything"])
-    result = try test.select(.eq, keys: [42])
-    print(result) // prints [42, "Answer to the Ultimate Question of Life, The Universe, and Everything"]
+    print(try test.select(.eq, keys: [42]))
+    // [42, "Answer to the Ultimate Question of Life, The Universe, and Everything"]
 
 } catch {
     print(error)
