@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./normalize.css">
+    <style>
+        h1, p, #links {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <p id="content"></p>
+
+    <div id="links">
+        <a href="/page/1">page 1</a>
+        <a href="/page/2">page 2</a>
+        <a href="/page/3">page 3</a>
+    </div>
+
+    <script>
+        function loadPage (url) {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var data = JSON.parse(xhr.responseText)
+                    document.getElementById('title').innerText = data.title
+                    document.getElementById('content').innerText = data.content
+                }
+            }
+            xhr.open('GET', '/api' + url, true)
+            xhr.send(null)
+        }
+
+        Array.prototype.slice.call(document.getElementsByTagName('a')).forEach((link) => {
+            link.onclick = (e) => {
+                loadPage(link.getAttribute('href'))
+                e.preventDefault()
+            }
+        })
+
+        loadPage(document.getElementsByTagName('a')[0].getAttribute('href'))
+    </script>
+</body>
+</html>
