@@ -1,6 +1,8 @@
 import Fiber
 import Foundation
 
+// Transfer execution
+
 fiber {
     print("hello from fiber 1")
     fiber {
@@ -13,6 +15,26 @@ fiber {
     print("bye from fiber 1")
 }
 
+// Channels
+
+var channel = Channel<Int>()
+
+fiber {
+    while let value = channel.read() {
+        print("read: \(value)")
+    }
+    print("read: the channel is closed.")
+}
+
+fiber {
+    for i in 0..<5 {
+        channel.write(i)
+    }
+    channel.close()
+}
+
+// Sleep
+
 let now = Date()
 
 fiber {
@@ -23,6 +45,8 @@ fiber {
     sleep(until: now.addingTimeInterval(1))
     print("fiber 1 woke up")
 }
+
+// Activity indicator
 
 fiber {
     while true {
