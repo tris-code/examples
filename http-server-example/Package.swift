@@ -15,13 +15,13 @@ let package = Package(
     targets: [
         Target(name: "HTTPServerExample")
     ],
+    products: [
+        .Executable(name: "server", targets: ["HTTPServerExample"])
+    ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0),
+        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0)
     ]
 )
-
-let product = Product(name: "server", type: .Executable, modules: "HTTPServerExample")
-products.append(product)

@@ -12,16 +12,16 @@ import PackageDescription
 
 let package = Package(
     name: "PolymerNginxExample",
+    products: [
+        .Executable(name: "server", targets: ["PolymerNginxExample"])
+    ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0),
+        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0)
     ],
     exclude: [
         "wwwroot"
     ]
 )
-
-let product = Product(name: "server", type: .Executable, modules: "PolymerNginxExample")
-products.append(product)

@@ -12,12 +12,12 @@ import PackageDescription
 
 let package = Package(
     name: "TarantoolModuleHTTPServerExample",
+    products: [
+        .Library(name: "module", type: .dynamic, targets: ["TarantoolModuleHTTPServerExample"])
+    ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/messagepack.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0),
     ]
 )
-
-let lib = Product(name: "example", type: .Library(.Dynamic), modules: "TarantoolModuleHTTPServerExample")
-products.append(lib)

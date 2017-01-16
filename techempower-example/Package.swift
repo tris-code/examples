@@ -15,11 +15,11 @@ let package = Package(
     targets: [
         Target(name: "Techempower")
     ],
+    products: [
+        .Executable(name: "server", targets: ["Techempower"])
+    ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0),
     ]
 )
-
-let product = Product(name: "server", type: .Executable, modules: "Techempower")
-products.append(product)
