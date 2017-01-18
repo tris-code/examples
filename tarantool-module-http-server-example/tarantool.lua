@@ -9,7 +9,11 @@ package.cpath =
 local ffi = require('ffi')
 local fiber = require('fiber')
 
+--init swift module
 local lib = ffi.load(package.searchpath(moduleName, package.cpath))
+ffi.cdef[[void tarantool_module_init();]]
+lib.tarantool_module_init()
+
 ffi.cdef[[int entry_point();]]
 
 os.execute("mkdir -p data")

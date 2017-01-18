@@ -2,35 +2,58 @@ import MessagePack
 import TarantoolModule
 import CTarantool
 
-typealias BoxResult = Int32
-
-struct ModuleError: Error {
+struct ModuleError: Error, CustomStringConvertible {
     let message: String
+
+    var description: String {
+        return message
+    }
 }
 
 @_silgen_name("helloSwift")
-func helloSwift(context: OpaquePointer) -> BoxResult {
-    return Box.returnTuple(["hello from swift"], to: context)
+func helloSwift(context: BoxContext) -> BoxResult {
+    return context.returnTuple(.string("hello from swift"))
 }
 
-
 @_silgen_name("getFoo")
-func getFoo(context: OpaquePointer, argsStart: UnsafePointer<UInt8>, argsEnd: UnsafePointer<UInt8>) -> BoxResult {
+func getFoo(context: BoxContext) -> BoxResult {
     do {
-        let source = BoxDataSource()
-        let schema = try Schema(source)
+        let schema = try Schema(BoxDataSource())
 
         guard let space = schema.spaces["data"] else {
-            throw ModuleError(message: "space 'data' not found")
+            return BoxError.returnError(code: .noSuchSpace, message: "space 'data' not found")
         }
+
+        try space.replace(["foo", "bar"])
 
         guard let result = try space.get(["foo"]) else {
-            throw ModuleError(message: "foo not found")
+            return BoxError.returnError(code: .tupleNotFound, message: "foo not found")
         }
 
-        return Box.returnTuple(result, to: context)
+        return context.returnTuple(.array(result))
     } catch {
-        Say.error(message: String(describing: error))
-        return -1
+        return BoxError.returnError(code: .procC, message: String(describing: error))
+    }
+}
+
+@_silgen_name("getCount")
+func getCount(context: BoxContext, argsStart: UnsafePointer<UInt8>, argsEnd: UnsafePointer<UInt8>) -> BoxResult {
+    do {
+        let schema = try Schema(BoxDataSource())
+
+        let args = try MessagePack.deserialize(bytes: argsStart, count: argsEnd - argsStart)
+        guard let name = Tuple(args)?.first, let spaceName = String(name) else {
+            throw ModuleError(message: "incorrect space name argument")
+        }
+
+        guard let space = schema.spaces[spaceName] else {
+            return BoxError.returnError(code: .noSuchSpace, message: "space '\(spaceName)' not found")
+        }
+
+        let count = try space.count()
+
+        return context.returnTuple(.int(count))
+    } catch {
+        return BoxError.returnError(code: .procC, message: String(describing: error))
     }
 }

@@ -14,7 +14,7 @@ test:create_index('primary', {type = 'hash', parts = {1, 'unsigned'}, if_not_exi
 
 if not box.schema.user.exists('tester') then
     box.schema.user.create('tester', { password = 'tester' })
-    box.schema.user.grant('tester', 'read,write,execute', 'universe')
+    box.schema.user.grant('tester', 'read,write,eval,execute', 'universe')
 end
 
 test:replace({1, 'foo'})

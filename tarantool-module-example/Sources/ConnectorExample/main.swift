@@ -7,6 +7,7 @@ do {
     print(try iproto.call("helloLua"))
     print(try iproto.call("helloSwift"))
     print(try iproto.call("getFoo"))
+    print(try iproto.call("getCount", arguments: ["test"]))
 
 } catch {
     print(error)
