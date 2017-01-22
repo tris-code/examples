@@ -13,6 +13,7 @@ box.cfg {
     listen = 3301,
     snap_dir = "data",
     wal_dir = "data",
+    vinyl_dir = "data",
     slab_alloc_arena=0.2 -- limit memory to 200mb to run on cheap vps/vds
 }
 
@@ -50,5 +51,5 @@ test:replace({1, 'foo'})
 test:replace({2, 'bar'})
 test:replace({3, 'baz'})
 
--- enable console
-require('console').start()
+-- enable console if needed
+-- require('console').start()
