@@ -9,7 +9,7 @@ Log.disabled = true
 let coresCount = sysconf(Int32(_SC_NPROCESSORS_ONLN))
 
 func startServer() throws {
-    let server = try Server(host: "127.0.0.1", port: 8080, async: AsyncFiber())
+    let server = try Server(host: "0.0.0.0", port: 8080, async: AsyncFiber())
 
     server.route(get: "/plaintext") {
         return "Hello, World!"
