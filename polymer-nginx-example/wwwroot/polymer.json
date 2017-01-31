@@ -1,0 +1,19 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/poly-app.html",
+  "fragments": [
+    "src/poly-view1.html",
+    "src/poly-view2.html",
+    "src/poly-view3.html",
+    "src/poly-view404.html"
+  ],
+  "sourceGlobs": [
+   "src/**/*",
+   "images/**/*",
+   "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

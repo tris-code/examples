@@ -11,9 +11,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "SpaNginxExample",
+    name: "PolymerNginxExample",
     products: [
-        .Executable(name: "server", targets: ["SpaNginxExample"])
+        .Executable(name: "server", targets: ["PolymerNginxExample"])
     ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
