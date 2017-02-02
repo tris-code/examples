@@ -16,11 +16,10 @@ let package = Package(
         Target(name: "ModuleExample"),
         Target(name: "ConnectorExample")
     ],
-    products: [
-        .Library(name: "module", type: .dynamic, targets: ["ModuleExample"]),
-        .Executable(name: "connector", targets: ["ConnectorExample"]),
-    ],
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0)
     ]
 )
+
+products.append(Product(name: "module", type: .Library(.Dynamic), modules: "ModuleExample"))
+products.append(Product(name: "connector", type: .Executable, modules: "ConnectorExample"))

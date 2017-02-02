@@ -6,6 +6,7 @@ box.cfg {
     listen = 3301,
     snap_dir = "data",
     wal_dir = "data",
+    vinyl_dir = "data",
     slab_alloc_arena=0.2
 }
 

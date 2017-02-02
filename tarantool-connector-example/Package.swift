@@ -11,10 +11,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "TarantoolConnectorExample",
-    products: [
-        .Executable(name: "connector", targets: ["TarantoolConnectorExample"])
-    ],
+    name: "connector",
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0)
     ]

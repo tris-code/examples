@@ -18,7 +18,7 @@ async.task {
         try socket.listen(at: "127.0.0.1", port: 7654)
         while true {
             let client = try socket.accept()
-            let written = try client.write(bytes: hey)
+            _ = try client.write(bytes: hey)
         }
     } catch {
         print("server socket error \(error)")
@@ -32,7 +32,7 @@ async.task {
             try socket.connect(to: "127.0.0.1", port: 7654)
 
             var buffer = [UInt8](repeating: 0, count: 100)
-            let read = try socket.read(to: &buffer)
+            _ = try socket.read(to: &buffer)
 
             print(String(cString: buffer))
         }

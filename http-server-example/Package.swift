@@ -11,13 +11,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "HTTPServerExample",
-    targets: [
-        Target(name: "HTTPServerExample")
-    ],
-    products: [
-        .Executable(name: "server", targets: ["HTTPServerExample"])
-    ],
+    name: "server",
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),

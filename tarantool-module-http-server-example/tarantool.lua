@@ -21,15 +21,14 @@ os.execute("mkdir -p data")
 box.cfg {
     snap_dir = "data",
     wal_dir = "data",
+    vinyl_dir = "data",
     slab_alloc_arena=0.2
 }
 
-local space = box.space.data
-if not space then
-    space = box.schema.create_space('data')
-    space:create_index('primary', { parts = {1, 'STR'} })
-end
+local space = box.schema.create_space('data', {if_not_exists = true})
+space:create_index('primary', { parts = {1, 'STR'}, if_not_exists = true })
 
 lib.entry_point()
 
-require('console').start()
+-- enable console if needed
+-- require('console').start()

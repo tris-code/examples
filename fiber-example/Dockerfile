@@ -6,4 +6,4 @@ COPY Package.swift /example
 WORKDIR /example
 RUN ["swift", "build"]
 
-ENTRYPOINT [".build/debug/FiberExample"]
+ENTRYPOINT [".build/debug/fiber"]

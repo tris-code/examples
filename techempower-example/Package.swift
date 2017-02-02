@@ -11,13 +11,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Techempower",
-    targets: [
-        Target(name: "Techempower")
-    ],
-    products: [
-        .Executable(name: "server", targets: ["Techempower"])
-    ],
+    name: "server",
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0),
