@@ -1,0 +1,54 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Async",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/async.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "AsyncDispatch",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/async-dispatch.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Fiber",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/fiber.git",
+      "version": "0.3.6"
+    },
+    {
+      "package": "HTTPServer",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/http-server.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Log",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/log.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Platform",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/platform.git",
+      "version": "0.3.3"
+    },
+    {
+      "package": "Reflection",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/reflection.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Socket",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/socket.git",
+      "version": "0.3.1"
+    }
+  ],
+  "version": 1
+}

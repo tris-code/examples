@@ -1,0 +1,60 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Async",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/async.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "CryptoSwift",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/cryptoswift.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "HTTPServer",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/http-server.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Log",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/log.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "MessagePack",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
+      "version": "0.3.1"
+    },
+    {
+      "package": "Platform",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/platform.git",
+      "version": "0.3.3"
+    },
+    {
+      "package": "Reflection",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/reflection.git",
+      "version": "0.3.0"
+    },
+    {
+      "package": "Socket",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/socket.git",
+      "version": "0.3.1"
+    },
+    {
+      "package": "Tarantool",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
+      "version": "0.3.11"
+    }
+  ],
+  "version": 1
+}
