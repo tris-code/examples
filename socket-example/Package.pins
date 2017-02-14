@@ -5,19 +5,19 @@
       "package": "Async",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/async.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "AsyncDispatch",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/async-dispatch.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "Fiber",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/fiber.git",
-      "version": "0.3.6"
+      "version": "0.3.7"
     },
     {
       "package": "Log",

@@ -68,6 +68,7 @@ async.task {
     }
 }
 
+
 async.task {
     do {
         let socket = try Socket(family: .inet6, awaiter: async.awaiter)
@@ -131,9 +132,4 @@ async.task {
     }
 }
 
-async.task {
-    sleep(until: Date().addingTimeInterval(0.01))
-    exit(0)
-}
-
-async.loop.run()
+async.loop.run(until: Date().addingTimeInterval(0.01))
