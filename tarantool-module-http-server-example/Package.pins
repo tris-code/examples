@@ -17,7 +17,7 @@
       "package": "HTTPServer",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http-server.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "Log",
@@ -47,13 +47,13 @@
       "package": "Socket",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/socket.git",
-      "version": "0.3.1"
+      "version": "0.3.2"
     },
     {
       "package": "Tarantool",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
-      "version": "0.3.11"
+      "version": "0.3.12"
     }
   ],
   "version": 1
