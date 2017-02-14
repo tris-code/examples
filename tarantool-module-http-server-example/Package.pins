@@ -5,7 +5,7 @@
       "package": "Async",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/async.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "CryptoSwift",
