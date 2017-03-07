@@ -110,19 +110,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     class MyApp extends Polymer.Element {
       static get is() { return 'poly-app'; }
 
-      static get config() {
+      static get properties() {
         return {
-          properties: {
-            page: {
-              type: String,
-              reflectToAttribute: true,
-              observer: '_pageChanged'
-            }
-          },
-          observers: [
-            '_routePageChanged(routeData.page)'
-          ],
-        }
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged'
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)'
+        ];
       }
 
       _routePageChanged(page) {
@@ -132,7 +133,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('poly-' + page + '.html');
-        Polymer.Utils.importHref(resolvedPageUrl, null, ()=>this._showPage404(), true);
+        Polymer.importHref(resolvedPageUrl, null, () => this._showPage404(), true);
       }
 
       _showPage404() {
