@@ -14,15 +14,19 @@ do {
         exit(0)
     }
 
-    print(try test.select(.eq, keys: [3]))
+    let equal = try test.select(.eq, keys: [3])
+    equal.forEach { print($0) }
     // [[3, "baz"]]
 
-    print(try test.select(.all))
+    let all = try test.select(.all)
+    all.forEach { print($0) }
     // first run: [[1, "foo"], [2, "bar"], [3, "baz"]]
     // second run: [[42, "Answer to the Ultimate Question of Life, The Universe, and Everything"], [1, "foo"], ...]
 
     try test.replace([42, "Answer to the Ultimate Question of Life, The Universe, and Everything"])
-    print(try test.select(.eq, keys: [42]))
+    if let answer = try test.get([42]) {
+        print(answer)
+    }
     // [42, "Answer to the Ultimate Question of Life, The Universe, and Everything"]
 
 } catch {

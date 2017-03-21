@@ -31,7 +31,7 @@ func runServer() throws {
                 return .rollback
             }
 
-            try transaction {
+            try? transaction {
                 try space.replace(["foo", "also rollback"])
                 throw SomeError()
             }
@@ -41,7 +41,7 @@ func runServer() throws {
                 return HTTPResponse(status: .notFound)
             }
 
-            return String(result[1]) ?? "error"
+            return result[1, as: String.self] ?? "not a string"
         } catch {
             return HTTPResponse(status: .internalServerError)
         }

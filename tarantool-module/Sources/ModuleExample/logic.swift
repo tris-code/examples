@@ -21,18 +21,18 @@ func getFoo() throws -> MessagePack {
     guard let result = try space.get(["foo"]) else {
         throw BoxError(code: .tupleNotFound, message: "foo not found")
     }
-    return .array(result)
+    return .array(result.rawValue)
 }
 
 func getCount(args: [MessagePack]) throws -> MessagePack {
     let schema = try Schema(BoxDataSource())
 
-    guard let first = args.first, let spaceName = String(first) else {
+    guard let name = String(args.first) else {
         throw ModuleError(description: "incorrect space name argument")
     }
 
-    guard let space = schema.spaces[spaceName] else {
-        throw BoxError(code: .noSuchSpace, message: "space '\(spaceName)' not found")
+    guard let space = schema.spaces[name] else {
+        throw BoxError(code: .noSuchSpace, message: "space '\(name)' not found")
     }
 
     let count = try space.count()

@@ -25,7 +25,7 @@ func getFooShim(context: BoxContext) -> BoxResult {
 func getCountShim(context: BoxContext, argsStart: UnsafePointer<UInt8>, argsEnd: UnsafePointer<UInt8>) -> BoxResult {
     do {
         let object = try MessagePack.decode(bytes: argsStart, count: argsEnd - argsStart)
-        guard let args = Tuple(object) else {
+        guard let args = [MessagePack](object) else {
             throw ModuleError(description: "expected msgpack array")
         }
         let result = try getCount(args: args)
