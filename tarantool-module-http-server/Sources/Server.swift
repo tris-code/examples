@@ -20,7 +20,8 @@ func runServer() throws {
 
     server.route(get: "/json") {
         do {
-            return try space.select(.all).toJson()
+            let tuples = try space.select(.all)
+            return HTTPResponse(serializing: tuples)
         }
         catch {
             return HTTPResponse(status: .internalServerError)
@@ -59,15 +60,14 @@ func runServer() throws {
     try server.start()
 }
 
-extension Sequence where Iterator.Element: Tuple {
-    func toJson() -> HTTPResponse {
-        var tuples = [String]()
-        for tuple in self {
-            tuples.append(String(describing: tuple.rawValue))
+extension HTTPResponse {
+    init<T: Tuple>(serializing tuples: AnySequence<T>) {
+        var strings = [String]()
+        for tuple in tuples {
+            strings.append(String(describing: tuple.rawValue))
         }
-
-        let result = "[\(tuples.joined(separator: ", "))]"
-        return HTTPResponse(json: [UInt8](result))
+        let result = "[\(strings.joined(separator: ", "))]"
+        self = HTTPResponse(json: [UInt8](result))
     }
 }
 
