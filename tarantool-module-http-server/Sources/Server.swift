@@ -18,6 +18,15 @@ func runServer() throws {
 
     var counter = 0
 
+    server.route(get: "/json") {
+        do {
+            return try space.select(.all).toJson()
+        }
+        catch {
+            return HTTPResponse(status: .internalServerError)
+        }
+    }
+
     server.route(get: "/*") { (request: HTTPRequest) in
         do {
             counter += 1
@@ -48,6 +57,18 @@ func runServer() throws {
     }
 
     try server.start()
+}
+
+extension Sequence where Iterator.Element: Tuple {
+    func toJson() -> HTTPResponse {
+        var tuples = [String]()
+        for tuple in self {
+            tuples.append(String(describing: tuple.rawValue))
+        }
+
+        let result = "[\(tuples.joined(separator: ", "))]"
+        return HTTPResponse(json: [UInt8](result))
+    }
 }
 
 @_silgen_name("entry_point")
