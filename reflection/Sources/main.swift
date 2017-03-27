@@ -7,18 +7,18 @@ struct User {
 
 let blueprint = Blueprint(ofType: User.self)
 
-let userDictionary = ["name" : "Tony", "age" : "7"]
-let tony = blueprint.construct(using: userDictionary) // ok, parse string by default
-let tonyNil = blueprint.construct(using: userDictionary, exact: true) // fail
+let values: [String : Any] = ["name" : "Tony", "age": 7]
+let tony = blueprint.construct(using: values, shouldConvert: false) // ok
 
-let userDictionaryExact: [String : Any] = ["name" : "Tony", "age" : 7]
-let tonyExact = blueprint.construct(using: userDictionaryExact, exact: true) // ok
+let stringValues = ["name" : "Tony", "age" : "7"]
+let tonyConverted = blueprint.construct(using: stringValues) // ok, parses strings by default
+let tonyNil = blueprint.construct(using: stringValues, shouldConvert: false) // fails
 
 print(tony as Any)
+print(tonyConverted as Any)
 print(tonyNil as Any)
-print(tonyExact as Any)
 
-
+print("prining fields:")
 let metadata = Metadata(ofType: User.self)
 for fieldType in metadata.fieldTypes {
     print(fieldType)

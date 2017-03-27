@@ -1,7 +1,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "reflection",
+    name: "example",
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/reflection.git", majorVersion: 0)
     ]
