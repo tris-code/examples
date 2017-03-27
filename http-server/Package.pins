@@ -23,7 +23,7 @@
       "package": "HTTPServer",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http-server.git",
-      "version": "0.3.1"
+      "version": "0.3.2"
     },
     {
       "package": "Log",
@@ -41,7 +41,7 @@
       "package": "Reflection",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/reflection.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "Socket",

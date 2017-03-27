@@ -60,7 +60,8 @@ struct TodoUpdate {
     let done: Bool
 }
 
-// post query example: name=commitChanges&done=true
+// post urlencoded query example: name=commitChanges&done=true
+// post json query example: {"name": "sleep sometimes", "done": false}
 server.route(post: "/todo") { (todo: TodoUpdate) in
     return "todo \(todo.name) state \(todo.done)"
 }
