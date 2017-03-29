@@ -16,15 +16,16 @@ do {
     // be careful, we use raw pointer here
     var decoder = Decoder(bytes: encoded, count: encoded.count)
     // throws on invalid data
-    let value = try decoder.decode() as MessagePack
+    let value = try decoder.decode()
     print("decoded object: \(value)")
     // reuse decoder
     decoder.rewind()
-    // you can avoid extra MessagePack object if you sure about structure
+    // you can avoid extra MessagePack object 
+    // if you sure about the structure
     // throws on wrong type
-    let string = try decoder.decode() as String
-    let int = try decoder.decode() as UInt8
-    let double = try decoder.decode() as Double
+    let string = try decoder.decode(String.self)
+    let int = try decoder.decode(UInt8.self)
+    let double = try decoder.decode(Double.self)
     print("decoded manually: \(string), \(int), \(double)")
 } catch {
     print(error)
