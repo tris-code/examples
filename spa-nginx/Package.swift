@@ -11,10 +11,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "server",
+    name: "example",
     dependencies: [
         .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/http-server.git", majorVersion: 0),
+        .Package(url: "https://github.com/tris-foundation/http.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0),
         .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0)
     ],

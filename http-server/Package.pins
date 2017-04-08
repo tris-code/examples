@@ -20,10 +20,10 @@
       "version": "0.3.7"
     },
     {
-      "package": "HTTPServer",
+      "package": "HTTP",
       "reason": null,
-      "repositoryURL": "https://github.com/tris-foundation/http-server.git",
-      "version": "0.3.2"
+      "repositoryURL": "https://github.com/tris-foundation/http.git",
+      "version": "0.3.3"
     },
     {
       "package": "Log",

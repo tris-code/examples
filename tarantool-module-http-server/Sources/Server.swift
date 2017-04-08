@@ -1,6 +1,6 @@
 import AsyncTarantool
 import TarantoolModule
-import HTTPServer
+import Server
 import Log
 
 struct SomeError: Error {}
@@ -21,14 +21,14 @@ func runServer() throws {
     server.route(get: "/json") {
         do {
             let tuples = try space.select(.all)
-            return HTTPResponse(serializing: tuples)
+            return Response(serializing: tuples)
         }
         catch {
-            return HTTPResponse(status: .internalServerError)
+            return Response(status: .internalServerError)
         }
     }
 
-    server.route(get: "/*") { (request: HTTPRequest) in
+    server.route(get: "/*") { (request: Request) in
         do {
             counter += 1
             try transaction {
@@ -48,26 +48,26 @@ func runServer() throws {
 
             guard let result = try space.get(["foo"]) else {
                 Log.error("foo not found")
-                return HTTPResponse(status: .notFound)
+                return Response(status: .notFound)
             }
 
             return result[1, as: String.self] ?? "not a string"
         } catch {
-            return HTTPResponse(status: .internalServerError)
+            return Response(status: .internalServerError)
         }
     }
 
     try server.start()
 }
 
-extension HTTPResponse {
+extension Response {
     init<T: Tuple>(serializing tuples: AnySequence<T>) {
         var strings = [String]()
         for tuple in tuples {
             strings.append(String(describing: tuple.rawValue))
         }
         let result = "[\(strings.joined(separator: ", "))]"
-        self = HTTPResponse(json: [UInt8](result))
+        self = Response(json: [UInt8](result))
     }
 }
 

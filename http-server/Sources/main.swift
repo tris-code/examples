@@ -1,7 +1,7 @@
 import Log
 import AsyncFiber
 import AsyncDispatch
-import HTTPServer
+import Server
 import Foundation
 
 // disable debug output
@@ -50,7 +50,7 @@ struct Page {
 // you can also mix url and query params:
 // example: /page/news?skip=2
 server.route(get: "/page/:name") { (page: Page) in
-    return "page \(page.name), skip \(page.skip)"
+    return page
 }
 
 // 3.2. post data
@@ -63,13 +63,13 @@ struct TodoUpdate {
 // post urlencoded query example: name=commitChanges&done=true
 // post json query example: {"name": "sleep sometimes", "done": false}
 server.route(post: "/todo") { (todo: TodoUpdate) in
-    return "todo \(todo.name) state \(todo.done)"
+    return todo
 }
 
 // example: /todo/commitChanges
 // post query: done=true
 server.route(post: "/todo/:name") { (todo: TodoUpdate) in
-    return "todo mix \(todo.name) state \(todo.done)"
+    return todo
 }
 
 // 3.3. serialize model into json
@@ -83,14 +83,14 @@ server.route(get: "/todo/as/json") {
 server.route(get: "/request") { request in
     return [
         "url": request.url,
-        "host": request.host,
-        "user-agent": request.userAgent
+        "host": request.host as Any,
+        "user-agent": request.userAgent as Any
     ]
 }
 
 // 5. Wildcard
 
-server.route(get: "/*") { (request: HTTPRequest) in
+server.route(get: "/*") { (request: Request) in
     return "wildcard: \(request.url)"
 }
 

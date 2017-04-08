@@ -6,4 +6,4 @@ COPY Package.swift /example
 WORKDIR /example
 RUN ["swift", "build", "-c", "release"]
 
-ENTRYPOINT [".build/release/server"]
+ENTRYPOINT [".build/release/example"]

@@ -1,7 +1,7 @@
 import Log
+import Server
 import AsyncFiber
 import AsyncDispatch
-import HTTPServer
 import Foundation
 
 // disable debug output
@@ -36,7 +36,7 @@ pages.append([
 server.route(get: "/api/page/:number") { (pageNumber: Int) in
     let pageNumber = pageNumber - 1
     guard pageNumber >= 0 && pageNumber < pages.count else {
-        return HTTPResponse(status: .notFound)
+        return Response(status: .notFound)
     }
     var result = pages[pageNumber]
     result["timestamp"] = String(describing: Date())
