@@ -1,25 +1,47 @@
 import Reflection
 
-struct User {
+struct Person {
     let name: String
     let age: Int
 }
 
-let blueprint = Blueprint(ofType: User.self)
 
-let values: [String : Any] = ["name" : "Tony", "age": 7]
-let tony = blueprint.construct(using: values, shouldConvert: false) // ok
+let blueprint = Blueprint(of: Person.self)
 
-let stringValues = ["name" : "Tony", "age" : "7"]
-let tonyConverted = blueprint.construct(using: stringValues) // ok, parses strings by default
-let tonyNil = blueprint.construct(using: stringValues, shouldConvert: false) // fails
+// Strict type
+let values: [String : Any] = ["name" : "Tony", "age": 16]
+let tony = blueprint.construct(using: values) // ok
+let tonyClone = blueprint.construct(using: values, shouldConvert: false) // ok
 
-print(tony as Any)
-print(tonyConverted as Any)
-print(tonyNil as Any)
+// Parse string values
+let stringValues = ["name" : "Tony", "age" : "16"]
+let tonyConverted = blueprint.construct(using: stringValues) // ok
+let tonyNil = blueprint.construct(using: stringValues, shouldConvert: false) // nil
 
-print("prining fields:")
-let metadata = Metadata(ofType: User.self)
+// Nested struct
+struct User {
+    let username: String
+    let person: Person
+}
+let userBlueprint = Blueprint(of: User.self)
+let userValues: [String : Any] = [
+    "username" : "tonyfreeman",
+    "person" : [
+        "name" : "Tony",
+        "age" : "16"
+    ]
+]
+let tonyUser = userBlueprint.construct(using: userValues) // ok
+
+
+print("tony: \(tony as Any)")
+print("tonyClone: \(tonyClone as Any)")
+print("tonyConverted: \(tonyConverted as Any)")
+print("tonyNil: \(tonyNil as Any)")
+print("tonyUser: \(tonyUser as Any)")
+
+print("fields:")
+let metadata = Metadata(of: User.self)
 for fieldType in metadata.fieldTypes {
     print(fieldType)
 }
