@@ -19,42 +19,33 @@ func runServer() throws {
     var counter = 0
 
     server.route(get: "/json") {
-        do {
-            let tuples = try space.select(.all)
-            return Response(serializing: tuples)
-        }
-        catch {
-            return Response(status: .internalServerError)
-        }
+        let tuples = try space.select(.all)
+        return Response(serializing: tuples)
     }
 
     server.route(get: "/*") { (request: Request) in
-        do {
-            counter += 1
-            try transaction {
-                try space.replace(["foo", .string("bar \(counter)")])
-                return .commit
-            }
-
-            try transaction {
-                try space.replace(["foo", "rollback"])
-                return .rollback
-            }
-
-            try? transaction {
-                try space.replace(["foo", "also rollback"])
-                throw SomeError()
-            }
-
-            guard let result = try space.get(["foo"]) else {
-                Log.error("foo not found")
-                return Response(status: .notFound)
-            }
-
-            return result[1, as: String.self] ?? "not a string"
-        } catch {
-            return Response(status: .internalServerError)
+        counter += 1
+        try transaction {
+            try space.replace(["foo", .string("bar \(counter)")])
+            return .commit
         }
+
+        try transaction {
+            try space.replace(["foo", "rollback"])
+            return .rollback
+        }
+
+        try? transaction {
+            try space.replace(["foo", "also rollback"])
+            throw SomeError()
+        }
+
+        guard let result = try space.get(["foo"]) else {
+            Log.error("foo not found")
+            return Response(status: .notFound)
+        }
+
+        return result[1, as: String.self] ?? "not a string"
     }
 
     try server.start()
