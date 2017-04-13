@@ -23,7 +23,7 @@
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.5"
+      "version": "0.3.6"
     },
     {
       "package": "Log",
