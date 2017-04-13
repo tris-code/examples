@@ -35,20 +35,14 @@ func runClient(async: Async) throws {
             }
 
             print {
-                let model: [String : Any] = [
+                try client.post("/todo", json: [
                     "name": "sleep sometimes",
                     "done": false
-                ]
-                let data = try JSONSerialization.data(withJSONObject: model)
-                return try client.post("/todo", json: [UInt8](data))
+                ])
             }
 
             print {
-                let model: [String : Any] = [
-                    "done": true
-                ]
-                let data = try JSONSerialization.data(withJSONObject: model)
-                return try client.post("/todo/post", json: [UInt8](data))
+                try client.post("/todo/post", json: ["done": true])
             }
 
             print {
@@ -62,8 +56,11 @@ func runClient(async: Async) throws {
             print {
                 try client.get("/whatdoesmarcelluswallacelooklike")
             }
+
+            exit(0)
         } catch {
             print(error)
+            exit(1)
         }
     }
 }
