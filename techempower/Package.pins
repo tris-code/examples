@@ -17,13 +17,13 @@
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.3"
+      "version": "0.3.10"
     },
     {
       "package": "Log",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/log.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "Platform",
@@ -35,13 +35,13 @@
       "package": "Reflection",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/reflection.git",
-      "version": "0.3.1"
+      "version": "0.3.2"
     },
     {
       "package": "Socket",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/socket.git",
-      "version": "0.3.3"
+      "version": "0.3.4"
     }
   ],
   "version": 1

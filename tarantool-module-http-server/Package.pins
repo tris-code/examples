@@ -17,13 +17,13 @@
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.5"
+      "version": "0.3.10"
     },
     {
       "package": "Log",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/log.git",
-      "version": "0.3.0"
+      "version": "0.3.1"
     },
     {
       "package": "MessagePack",
@@ -47,7 +47,7 @@
       "package": "Socket",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/socket.git",
-      "version": "0.3.3"
+      "version": "0.3.4"
     },
     {
       "package": "Tarantool",
