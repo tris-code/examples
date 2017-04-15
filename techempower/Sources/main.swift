@@ -6,8 +6,6 @@ import Foundation
 
 Log.disabled = true
 
-let coresCount = sysconf(Int32(_SC_NPROCESSORS_ONLN))
-
 func startServer() throws {
     let async = AsyncFiber()
     let server = try Server(host: "0.0.0.0", reusePort: 8080, async: async)
@@ -25,7 +23,8 @@ func startServer() throws {
 }
 
 #if os(Linux)
-for _ in 0..<coresCount-1 {
+let threadsCount = ProcessInfo.processInfo.activeProcessorCount - 1
+for _ in 0..<threadsCount {
     Thread {
         do {
             try startServer()
