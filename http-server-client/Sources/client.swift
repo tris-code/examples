@@ -56,8 +56,6 @@ func runClient(async: Async) throws {
             print {
                 try client.get("/whatdoesmarcelluswallacelooklike")
             }
-
-            exit(0)
         } catch {
             print(error)
             exit(1)
