@@ -4,14 +4,8 @@ import AsyncFiber
 import AsyncDispatch
 import Foundation
 
-// disable debug output
-Log.delegate = { level, message in
-    if level != .debug {
-        print("[\(level)] \(message)")
-    }
-}
-
-let server = try Server(host: "127.0.0.1", port: 9001, async: AsyncFiber())
+let async = AsyncFiber()
+let server = try Server(host: "127.0.0.1", port: 9001, async: async)
 
 var pages = [[String : Any]]()
 
@@ -39,3 +33,4 @@ server.route(get: "/api/page/:number") { (pageNumber: Int) in
 }
 
 try server.start()
+async.loop.run()
