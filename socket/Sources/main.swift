@@ -1,5 +1,5 @@
 import Fiber
-import Socket
+import Network
 import Dispatch
 import Foundation
 import AsyncFiber
@@ -110,7 +110,7 @@ unlink("/tmp/socketexample.sock")
 
 async.task {
     do {
-        let socket = try Socket(family: .unix, type: type, awaiter: async.awaiter)
+        let socket = try Socket(family: .local, type: type, awaiter: async.awaiter)
             .bind(to: "/tmp/socketexample.sock")
             .listen()
 
@@ -123,7 +123,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(family: .unix, type: type, awaiter: async.awaiter)
+        let socket = try Socket(family: .local, type: type, awaiter: async.awaiter)
             .connect(to: "/tmp/socketexample.sock")
 
         var buffer = empty

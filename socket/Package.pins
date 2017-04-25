@@ -5,7 +5,7 @@
       "package": "Async",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/async.git",
-      "version": "0.3.1"
+      "version": "0.3.2"
     },
     {
       "package": "AsyncDispatch",
@@ -17,7 +17,7 @@
       "package": "Fiber",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/fiber.git",
-      "version": "0.3.7"
+      "version": "0.3.8"
     },
     {
       "package": "Log",
@@ -26,16 +26,16 @@
       "version": "0.3.1"
     },
     {
+      "package": "Network",
+      "reason": null,
+      "repositoryURL": "https://github.com/tris-foundation/socket.git",
+      "version": "0.3.7"
+    },
+    {
       "package": "Platform",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/platform.git",
       "version": "0.3.3"
-    },
-    {
-      "package": "Socket",
-      "reason": null,
-      "repositoryURL": "https://github.com/tris-foundation/socket.git",
-      "version": "0.3.4"
     }
   ],
   "version": 1
