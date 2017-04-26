@@ -28,7 +28,7 @@
     {
       "package": "Network",
       "reason": null,
-      "repositoryURL": "https://github.com/tris-foundation/socket.git",
+      "repositoryURL": "https://github.com/tris-foundation/network.git",
       "version": "0.3.7"
     },
     {
