@@ -20,7 +20,7 @@ func runServer() throws {
 
     server.route(get: "/json") {
         let tuples = try space.select(.all)
-        return Response(serializing: tuples)
+        return try Response(serializing: tuples)
     }
 
     server.route(get: "/*") { (request: Request) in
@@ -52,13 +52,16 @@ func runServer() throws {
 }
 
 extension Response {
-    init<T: Tuple>(serializing tuples: AnySequence<T>) {
+    init<T: Tuple>(serializing tuples: AnySequence<T>) throws {
         var strings = [String]()
         for tuple in tuples {
             strings.append(String(describing: tuple.rawValue))
         }
         let result = "[\(strings.joined(separator: ", "))]"
-        self = Response(json: [UInt8](result))
+        var response = Response()
+        response.contentType = .json
+        response.rawBody = [UInt8](result)
+        self = response
     }
 }
 
