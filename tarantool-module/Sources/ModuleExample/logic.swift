@@ -40,5 +40,5 @@ func getCount(args: [MessagePack]) throws -> MessagePack {
 }
 
 func evalLuaScript() throws -> MessagePack {
-    return .array(try Box().eval("return 40 + 2"))
+    return .array(try Lua.eval("return 40 + 2"))
 }
