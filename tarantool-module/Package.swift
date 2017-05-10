@@ -21,5 +21,5 @@ let package = Package(
     ]
 )
 
-products.append(Product(name: "module", type: .Library(.Dynamic), modules: "ModuleExample"))
+products.append(Product(name: "ModuleExample", type: .Library(.Dynamic), modules: "ModuleExample"))
 products.append(Product(name: "connector", type: .Executable, modules: "ConnectorExample"))

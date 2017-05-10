@@ -8,6 +8,7 @@ do {
     print(try iproto.call("helloSwift"))
     print(try iproto.call("getFoo"))
     print(try iproto.call("getCount", arguments: ["test"]))
+    print(try iproto.call("evalLuaScript"))
 
 } catch {
     print(error)

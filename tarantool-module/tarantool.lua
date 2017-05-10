@@ -1,14 +1,14 @@
 #!/usr/bin/env tarantool
 
-local moduleName = 'module'
+local swiftModule = 'ModuleExample'
 package.cpath =
-    '.build/debug/lib'..moduleName..'.so;.build/debug/lib'..moduleName..'.dylib;'..
-    '.build/release/lib'..moduleName..'.so;.build/release/lib'..moduleName..'.dylib;'..
+    '.build/debug/lib'..swiftModule..'.so;.build/debug/lib'..swiftModule..'.dylib;'..
+    '.build/release/lib'..swiftModule..'.so;.build/release/lib'..swiftModule..'.dylib;'..
     package.cpath
 
 os.execute("mkdir -p data")
 
---init tarantool
+-- init tarantool
 box.cfg {
     listen = 3301,
     snap_dir = "data",
@@ -17,11 +17,8 @@ box.cfg {
     slab_alloc_arena=0.2 -- limit memory to 200mb to run on cheap vps/vds
 }
 
---init swift module
-local ffi = require('ffi')
-local lib = ffi.load(package.searchpath(moduleName, package.cpath))
-ffi.cdef[[void tarantool_module_init();]]
-lib.tarantool_module_init()
+-- init swift module
+require(swiftModule)
 
 -- create data space
 local data = box.schema.create_space('data', {if_not_exists = true})
@@ -36,12 +33,10 @@ end
 box.schema.func.create('helloSwift', {language = "C", if_not_exists = true})
 box.schema.func.create('getFoo', {language = "C", if_not_exists = true})
 box.schema.func.create('getCount', {language = "C", if_not_exists = true})
+box.schema.func.create('evalLuaScript', {language = "C", if_not_exists = true})
 
 -- guest user rights
 box.schema.user.grant('guest', 'read,write,execute', 'universe', nil, {if_not_exists = true})
-box.schema.user.grant('guest', 'execute', 'function', 'helloLua', {if_not_exists = true})
-box.schema.user.grant('guest', 'execute', 'function', 'helloSwift', {if_not_exists = true})
-box.schema.user.grant('guest', 'execute', 'function', 'getFoo', {if_not_exists = true})
 
 -- test space for getCount function
 local test = box.schema.space.create('test', {if_not_exists = true})

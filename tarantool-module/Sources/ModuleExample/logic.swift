@@ -10,7 +10,7 @@ func helloSwift() -> MessagePack {
 }
 
 func getFoo() throws -> MessagePack {
-    let schema = try Schema(BoxDataSource())
+    let schema = try Schema(Box())
 
     guard let space = schema.spaces["data"] else {
         throw BoxError(code: .noSuchSpace, message: "space 'data' not found")
@@ -25,7 +25,7 @@ func getFoo() throws -> MessagePack {
 }
 
 func getCount(args: [MessagePack]) throws -> MessagePack {
-    let schema = try Schema(BoxDataSource())
+    let schema = try Schema(Box())
 
     guard let name = String(args.first) else {
         throw ModuleError(description: "incorrect space name argument")
@@ -37,4 +37,8 @@ func getCount(args: [MessagePack]) throws -> MessagePack {
 
     let count = try space.count()
     return .int(count)
+}
+
+func evalLuaScript() throws -> MessagePack {
+    return .array(try Box().eval("return 40 + 2"))
 }
