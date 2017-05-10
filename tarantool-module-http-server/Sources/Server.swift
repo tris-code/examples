@@ -8,8 +8,7 @@ struct SomeError: Error {}
 func runServer() throws {
     let server = try Server(host: "0.0.0.0", port: 8080, async: AsyncTarantool())
 
-    let source = BoxDataSource()
-    let schema = try Schema(source)
+    let schema = try Schema(Box())
 
     guard let space = schema.spaces["data"] else {
         Log.error("space 'data' not found")
