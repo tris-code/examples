@@ -10,8 +10,10 @@ box.cfg {
     slab_alloc_arena=0.2
 }
 
+box.schema.user.passwd('admin', 'admin')
+
 local test = box.schema.space.create('test', {if_not_exists = true})
-test:create_index('primary', {type = 'hash', parts = {1, 'unsigned'}, if_not_exists = true})
+test:create_index('primary', {type = 'tree', parts = {1, 'unsigned'}, if_not_exists = true})
 
 if not box.schema.user.exists('tester') then
     box.schema.user.create('tester', { password = 'tester' })
