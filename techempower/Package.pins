@@ -17,7 +17,7 @@
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.11"
+      "version": "0.3.12"
     },
     {
       "package": "Log",
