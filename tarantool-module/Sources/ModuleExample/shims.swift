@@ -1,6 +1,5 @@
 import MessagePack
 import TarantoolModule
-import CTarantool
 
 // it just looks much cleaner until we find a better solution
 
