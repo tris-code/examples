@@ -23,13 +23,13 @@
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.12"
+      "version": "0.3.13"
     },
     {
       "package": "Log",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/log.git",
-      "version": "0.3.1"
+      "version": "0.3.3"
     },
     {
       "package": "Network",
