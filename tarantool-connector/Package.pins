@@ -35,7 +35,7 @@
       "package": "Tarantool",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
-      "version": "0.3.22"
+      "version": "0.3.23"
     }
   ],
   "version": 1
