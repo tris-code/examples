@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="poly-view3">
+<dom-module id="my-view1">
   <template>
     <style include="shared-styles">
       :host {
@@ -24,7 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <iron-ajax
       auto
-      url="/api/page/3"
+      url="/api/page/1"
       handle-as="json"
       last-response="{{ajaxResponse}}"
       debounce-duration="300"></iron-ajax>
@@ -38,9 +38,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class MyView3 extends Polymer.Element {
-      static get is() { return 'poly-view3'; }
+    class MyView1 extends Polymer.Element {
+      static get is() { return 'my-view1'; }
     }
-    customElements.define(MyView3.is, MyView3);
+    window.customElements.define(MyView1.is, MyView1);
   </script>
 </dom-module>

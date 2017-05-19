@@ -1,19 +1,30 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/poly-app.html",
+  "shell": "src/my-app.html",
   "fragments": [
-    "src/poly-view1.html",
-    "src/poly-view2.html",
-    "src/poly-view3.html",
-    "src/poly-view404.html"
+    "src/my-view1.html",
+    "src/my-view2.html",
+    "src/my-view3.html",
+    "src/my-view404.html"
   ],
-  "sourceGlobs": [
-   "src/**/*",
-   "images/**/*",
-   "bower.json"
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
   ],
-  "includeDependencies": [
+  "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [
+    {
+      "preset": "es5-bundled"
+    },
+    {
+      "preset": "es6-unbundled"
+    }
   ]
 }
