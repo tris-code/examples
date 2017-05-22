@@ -26,16 +26,10 @@ func runServer() throws {
         counter += 1
         try transaction {
             try space.replace(["foo", .string("bar \(counter)")])
-            return .commit
-        }
-
-        try transaction {
-            try space.replace(["foo", "rollback"])
-            return .rollback
         }
 
         try? transaction {
-            try space.replace(["foo", "also rollback"])
+            try space.replace(["foo", "rollback"])
             throw SomeError()
         }
 
@@ -58,7 +52,7 @@ extension Response {
         }
         let result = "[\(strings.joined(separator: ", "))]"
         var response = Response()
-        response.contentType = .json
+        response.contentType = try ContentType(mediaType: .application(.json))
         response.rawBody = [UInt8](result)
         self = response
     }

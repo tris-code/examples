@@ -5,19 +5,19 @@
       "package": "Async",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/async.git",
-      "version": "0.3.2"
+      "version": "0.3.3"
     },
     {
       "package": "Fiber",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/fiber.git",
-      "version": "0.3.8"
+      "version": "0.3.9"
     },
     {
       "package": "HTTP",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/http.git",
-      "version": "0.3.13"
+      "version": "0.3.15"
     },
     {
       "package": "Log",
@@ -29,7 +29,7 @@
       "package": "Network",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/network.git",
-      "version": "0.3.7"
+      "version": "0.3.8"
     },
     {
       "package": "Platform",
@@ -41,7 +41,7 @@
       "package": "Reflection",
       "reason": null,
       "repositoryURL": "https://github.com/tris-foundation/reflection.git",
-      "version": "0.3.2"
+      "version": "0.3.3"
     }
   ],
   "version": 1
