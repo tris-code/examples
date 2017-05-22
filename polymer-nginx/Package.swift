@@ -1,24 +1,41 @@
-/*
- * Copyright 2017 Tris Foundation and the project authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License
- *
- * See LICENSE.txt in the project root for license information
- * See CONTRIBUTORS.txt for the list of the project authors
- */
+// swift-tools-version:4.0
 
 import PackageDescription
 
 let package = Package(
-    name: "example",
+    name: "polymer-nginx-example",
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/tris-foundation/http.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0, minor: 3)
+        .package(
+            url: "https://github.com/tris-foundation/platform.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/http.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/async-dispatch.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/fiber.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/log.git",
+            from: "0.4.0"
+        )
     ],
-    exclude: [
-        "wwwroot"
+    targets: [
+        .target(
+            name: "main",
+            dependencies: [
+                "Log",
+                "Server",
+                "Fiber",
+                "AsyncFiber",
+                "AsyncDispatch"
+            ]
+        )
     ]
 )

@@ -1,0 +1,88 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Async",
+        "repositoryURL": "https://github.com/tris-foundation/async.git",
+        "state": {
+          "branch": null,
+          "revision": "7406aed61edb6d9ce2be2eada5da3c676f0f5632",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "AsyncDispatch",
+        "repositoryURL": "https://github.com/tris-foundation/async-dispatch.git",
+        "state": {
+          "branch": null,
+          "revision": "72122367e3a9b79beb39ac4ab228a4993079f78d",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Fiber",
+        "repositoryURL": "https://github.com/tris-foundation/fiber.git",
+        "state": {
+          "branch": null,
+          "revision": "43b1ce9940d86b2b84e7d0d7da6736d92dd89ab9",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "HTTP",
+        "repositoryURL": "https://github.com/tris-foundation/http.git",
+        "state": {
+          "branch": null,
+          "revision": "608c467318ec80dbf5925e4b720c1a81df2c6c82",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Log",
+        "repositoryURL": "https://github.com/tris-foundation/log.git",
+        "state": {
+          "branch": null,
+          "revision": "6ddd3d665d12fa143be610e40a58dc863763b70f",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Network",
+        "repositoryURL": "https://github.com/tris-foundation/network.git",
+        "state": {
+          "branch": null,
+          "revision": "bb9a8428cc910637ce6072b66d186f47894baf26",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Platform",
+        "repositoryURL": "https://github.com/tris-foundation/platform.git",
+        "state": {
+          "branch": null,
+          "revision": "6e0f6b4905851110634976e993980abe42101949",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Reflection",
+        "repositoryURL": "https://github.com/tris-foundation/reflection.git",
+        "state": {
+          "branch": null,
+          "revision": "60ae9f20a34a436525d755689b491b5760f22476",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Test",
+        "repositoryURL": "https://github.com/tris-foundation/test.git",
+        "state": {
+          "branch": null,
+          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

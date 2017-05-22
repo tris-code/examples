@@ -1,4 +1,4 @@
-FROM trisdocker/universe
+FROM trisdocker/universe:dev
 
 COPY ./Sources /example/Sources
 COPY Package.swift /example
@@ -6,4 +6,4 @@ COPY Package.swift /example
 WORKDIR /example
 RUN ["swift", "build"]
 
-ENTRYPOINT [".build/debug/example"]
+ENTRYPOINT [".build/debug/main"]

@@ -1,25 +1,20 @@
-/*
- * Copyright 2017 Tris Foundation and the project authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License
- *
- * See LICENSE.txt in the project root for license information
- * See CONTRIBUTORS.txt for the list of the project authors
- */
+// swift-tools-version:4.0
 
 import PackageDescription
 
 let package = Package(
-    name: "TarantoolModuleExample",
-    targets: [
-        Target(name: "ModuleExample"),
-        Target(name: "ConnectorExample")
+    name: "tarantool-module-example",
+    products: [
+        .library(name: "module", type: .dynamic, targets: ["module"])
     ],
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0, minor: 3)
+        .package(
+            url: "https://github.com/tris-foundation/tarantool.git",
+            from: "0.4.0"
+        )
+    ],
+    targets: [
+        .target(name: "module", dependencies: ["TarantoolModule"]),
+        .target(name: "connector", dependencies: ["TarantoolConnector"])
     ]
 )
-
-products.append(Product(name: "ModuleExample", type: .Library(.Dynamic), modules: "ModuleExample"))
-products.append(Product(name: "connector", type: .Executable, modules: "ConnectorExample"))

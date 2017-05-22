@@ -1,6 +1,6 @@
 #!/usr/bin/env tarantool
 
-local swiftModule = 'ModuleExample'
+local swiftModule = 'module'
 package.cpath =
     '.build/debug/lib'..swiftModule..'.so;.build/debug/lib'..swiftModule..'.dylib;'..
     '.build/release/lib'..swiftModule..'.so;.build/release/lib'..swiftModule..'.dylib;'..

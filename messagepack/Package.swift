@@ -1,10 +1,16 @@
-// swift-tools-version:3.1
+// swift-tools-version:4.0
 
 import PackageDescription
 
 let package = Package(
-    name: "example",
+    name: "messagepack-example",
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/messagepack.git", majorVersion: 0, minor: 3)
+        .package(
+            url: "https://github.com/tris-foundation/messagepack.git",
+            from: "0.4.0"
+        )
+    ],
+    targets: [
+        .target(name: "main", dependencies: ["MessagePack"])
     ]
 )

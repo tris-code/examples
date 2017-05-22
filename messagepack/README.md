@@ -1,7 +1,7 @@
 ### SwiftPM
 ```bash
 swift build
-.build/debug/example
+.build/debug/main
 ```
 
 ### Docker

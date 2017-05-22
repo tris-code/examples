@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Async",
+        "repositoryURL": "https://github.com/tris-foundation/async.git",
+        "state": {
+          "branch": null,
+          "revision": "7406aed61edb6d9ce2be2eada5da3c676f0f5632",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Crypto",
+        "repositoryURL": "https://github.com/tris-foundation/crypto.git",
+        "state": {
+          "branch": null,
+          "revision": "1f2b1fcd0c41aede095b6f5e086fce7476bcf29d",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "MessagePack",
+        "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
+        "state": {
+          "branch": null,
+          "revision": "3ce28c9d2af82d7c3495ffe4e1a2c8a528d4a47b",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Network",
+        "repositoryURL": "https://github.com/tris-foundation/network.git",
+        "state": {
+          "branch": null,
+          "revision": "bb9a8428cc910637ce6072b66d186f47894baf26",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Platform",
+        "repositoryURL": "https://github.com/tris-foundation/platform.git",
+        "state": {
+          "branch": null,
+          "revision": "6e0f6b4905851110634976e993980abe42101949",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Tarantool",
+        "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
+        "state": {
+          "branch": null,
+          "revision": "65850f124ad1398ea328ace986f34a2773abda33",
+          "version": "0.4.1"
+        }
+      },
+      {
+        "package": "Test",
+        "repositoryURL": "https://github.com/tris-foundation/test.git",
+        "state": {
+          "branch": null,
+          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

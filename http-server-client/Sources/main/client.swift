@@ -2,7 +2,7 @@ import Async
 import Client
 import Foundation
 
-func print(_ request: (Void) throws -> Response) {
+func print(_ request: () throws -> Response) {
     do {
         let response = try request()
         Swift.print(response.body ?? "empty response")

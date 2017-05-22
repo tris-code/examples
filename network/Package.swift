@@ -1,10 +1,32 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
-    name: "example",
+    name: "network-example",
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/network.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0, minor: 3)
+        .package(
+            url: "https://github.com/tris-foundation/network.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/async-dispatch.git",
+            from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/fiber.git",
+            from: "0.4.0"
+        )
+    ],
+    targets: [
+        .target(
+            name: "main",
+            dependencies: [
+                "Fiber",
+                "Network",
+                "AsyncFiber",
+                "AsyncDispatch",
+            ]
+        )
     ]
 )

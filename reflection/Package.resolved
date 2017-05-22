@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Reflection",
+        "repositoryURL": "https://github.com/tris-foundation/reflection.git",
+        "state": {
+          "branch": null,
+          "revision": "60ae9f20a34a436525d755689b491b5760f22476",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "Test",
+        "repositoryURL": "https://github.com/tris-foundation/test.git",
+        "state": {
+          "branch": null,
+          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
