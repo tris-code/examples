@@ -17,7 +17,7 @@ let package = Package(
         Target(name: "ConnectorExample")
     ],
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0)
+        .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0, minor: 3)
     ]
 )
 

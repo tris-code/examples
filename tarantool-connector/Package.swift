@@ -13,6 +13,6 @@ import PackageDescription
 let package = Package(
     name: "connector",
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0)
+        .Package(url: "https://github.com/tris-foundation/tarantool.git", majorVersion: 0, minor: 3)
     ]
 )

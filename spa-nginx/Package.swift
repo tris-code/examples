@@ -13,10 +13,10 @@ import PackageDescription
 let package = Package(
     name: "example",
     dependencies: [
-        .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/http.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0),
-        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0)
+        .Package(url: "https://github.com/tris-foundation/platform.git", majorVersion: 0, minor: 3),
+        .Package(url: "https://github.com/tris-foundation/http.git", majorVersion: 0, minor: 3),
+        .Package(url: "https://github.com/tris-foundation/async-dispatch.git", majorVersion: 0, minor: 3),
+        .Package(url: "https://github.com/tris-foundation/fiber.git", majorVersion: 0, minor: 3)
     ],
     exclude: [
         "wwwroot"
