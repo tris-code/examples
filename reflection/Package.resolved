@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/tris-foundation/reflection.git",
         "state": {
           "branch": null,
-          "revision": "60ae9f20a34a436525d755689b491b5760f22476",
-          "version": "0.4.0"
+          "revision": "29aa3fc6347c840f3e77a2930e15515875358814",
+          "version": "0.4.2"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/tris-foundation/test.git",
         "state": {
           "branch": null,
-          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
-          "version": "0.4.0"
+          "revision": "aa0c9bb268c6bf9d1b90b4f3a83b0c1f318f1a9b",
+          "version": "0.4.1"
         }
       }
     ]

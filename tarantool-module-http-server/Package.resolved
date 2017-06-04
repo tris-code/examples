@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/tris-foundation/async.git",
         "state": {
           "branch": null,
-          "revision": "7406aed61edb6d9ce2be2eada5da3c676f0f5632",
-          "version": "0.4.0"
+          "revision": "1e9ee9f575aa756b151d80209eacf987f2fc796e",
+          "version": "0.4.6"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/tris-foundation/fiber.git",
         "state": {
           "branch": null,
-          "revision": "43b1ce9940d86b2b84e7d0d7da6736d92dd89ab9",
-          "version": "0.4.0"
+          "revision": "6c874e05667dbe43a6d76a405f36b039b39edb51",
+          "version": "0.4.8"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/tris-foundation/http.git",
         "state": {
           "branch": null,
-          "revision": "608c467318ec80dbf5925e4b720c1a81df2c6c82",
-          "version": "0.4.0"
+          "revision": "93aaf595b9d5abd086ff50e2c1bb3a0d9fb5077c",
+          "version": "0.4.2"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
         "state": {
           "branch": null,
-          "revision": "3ce28c9d2af82d7c3495ffe4e1a2c8a528d4a47b",
-          "version": "0.4.0"
+          "revision": "0b812128f149aecfc625d75516d8f4a485931d3b",
+          "version": "0.4.1"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/tris-foundation/reflection.git",
         "state": {
           "branch": null,
-          "revision": "60ae9f20a34a436525d755689b491b5760f22476",
-          "version": "0.4.0"
+          "revision": "29aa3fc6347c840f3e77a2930e15515875358814",
+          "version": "0.4.2"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
         "state": {
           "branch": null,
-          "revision": "65850f124ad1398ea328ace986f34a2773abda33",
-          "version": "0.4.1"
+          "revision": "6418684efeab4bb08d0a8a139b25d43899035c79",
+          "version": "0.4.3"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/tris-foundation/test.git",
         "state": {
           "branch": null,
-          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
-          "version": "0.4.0"
+          "revision": "aa0c9bb268c6bf9d1b90b4f3a83b0c1f318f1a9b",
+          "version": "0.4.1"
         }
       }
     ]

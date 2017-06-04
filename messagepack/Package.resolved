@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
         "state": {
           "branch": null,
-          "revision": "3ce28c9d2af82d7c3495ffe4e1a2c8a528d4a47b",
-          "version": "0.4.0"
+          "revision": "0b812128f149aecfc625d75516d8f4a485931d3b",
+          "version": "0.4.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/tris-foundation/test.git",
         "state": {
           "branch": null,
-          "revision": "408fd89c2a56a03237c9c5a98016ffcc115352ff",
-          "version": "0.4.0"
+          "revision": "aa0c9bb268c6bf9d1b90b4f3a83b0c1f318f1a9b",
+          "version": "0.4.1"
         }
       }
     ]
