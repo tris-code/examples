@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/tris-foundation/async.git",
         "state": {
           "branch": null,
-          "revision": "1e9ee9f575aa756b151d80209eacf987f2fc796e",
-          "version": "0.4.6"
+          "revision": "32c1ba4698fb14d141f2f063fc49e3e52923d7eb",
+          "version": "0.4.7"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/tris-foundation/reflection.git",
         "state": {
           "branch": null,
-          "revision": "1f812d3fb2bad6aee5a4f1585894a1b0fead2347",
-          "version": "0.4.3"
+          "revision": "528460567b6be8f1bf54144926bf782502a83b16",
+          "version": "0.4.4"
         }
       },
       {
