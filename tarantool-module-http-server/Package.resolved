@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/tris-foundation/network.git",
         "state": {
           "branch": null,
-          "revision": "bb9a8428cc910637ce6072b66d186f47894baf26",
-          "version": "0.4.0"
+          "revision": "a110fa8eede5d6f8751eb06f5e9b59a583e751e1",
+          "version": "0.4.1"
         }
       },
       {
