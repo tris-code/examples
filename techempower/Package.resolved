@@ -24,8 +24,17 @@
         "repositoryURL": "https://github.com/tris-foundation/http.git",
         "state": {
           "branch": null,
-          "revision": "93aaf595b9d5abd086ff50e2c1bb3a0d9fb5077c",
-          "version": "0.4.2"
+          "revision": "4fb59fdb047e039f7f2f414fb00c445a4744b612",
+          "version": "0.4.7"
+        }
+      },
+      {
+        "package": "JSON",
+        "repositoryURL": "https://github.com/tris-foundation/json.git",
+        "state": {
+          "branch": null,
+          "revision": "6449d42bfa04b64b08ef7805a44c5944628a067c",
+          "version": "0.4.1"
         }
       },
       {
@@ -53,15 +62,6 @@
           "branch": null,
           "revision": "6e0f6b4905851110634976e993980abe42101949",
           "version": "0.4.0"
-        }
-      },
-      {
-        "package": "Reflection",
-        "repositoryURL": "https://github.com/tris-foundation/reflection.git",
-        "state": {
-          "branch": null,
-          "revision": "528460567b6be8f1bf54144926bf782502a83b16",
-          "version": "0.4.4"
         }
       },
       {

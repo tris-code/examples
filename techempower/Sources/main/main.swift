@@ -14,8 +14,11 @@ func startServer() throws {
         return "Hello, World!"
     }
 
+    struct JSON: Encodable {
+        let message: String
+    }
     server.route(get: "/json") {
-        return ["message": "Hello, World!"]
+        return JSON(message: "Hello, World!")
     }
 
     try server.start()
