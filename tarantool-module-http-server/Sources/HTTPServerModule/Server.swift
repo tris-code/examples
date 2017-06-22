@@ -52,7 +52,7 @@ extension Response {
         }
         let result = "[\(strings.joined(separator: ", "))]"
         var response = Response()
-        response.contentType = try ContentType(mediaType: .application(.json))
+        response.contentType = ContentType(mediaType: .application(.json))
         response.rawBody = [UInt8](result)
         self = response
     }
