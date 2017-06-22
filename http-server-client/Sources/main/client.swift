@@ -27,30 +27,36 @@ func runClient(async: Async) throws {
             }
 
             print {
-                try client.get("/robot/8")
+                try client.get("/user/8")
             }
 
             print {
-                try client.get("/page/news?skip=2")
+                try client.get("/todos")
+            }
+
+            struct Todo: Encodable {
+                let name: String
+                let done: Bool
             }
 
             print {
-                try client.post("/todo", json: [
-                    "name": "sleep sometimes",
-                    "done": false
-                ])
+                try client.post("/todo", json: Todo(
+                    name: "sleep sometimes (from json)",
+                    done: false))
             }
 
             print {
-                try client.post("/todo/post", json: ["done": true])
+                try client.post("/todo", urlEncoded: Todo(
+                    name: "sleep sometimes (from urlencoded)",
+                    done: false))
+            }
+
+            struct Event: Encodable {
+                let name: String
             }
 
             print {
-                try client.get("/todo/as/json")
-            }
-
-            print {
-                try client.get("/request")
+                try client.post("/date/May/8", json: Event(name: "Dance"))
             }
 
             print {

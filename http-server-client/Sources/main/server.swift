@@ -10,55 +10,49 @@ func runServer(async: Async) throws {
         return "hey there!"
     }
 
-    // 2. Map url param to primitive types
-    server.route(get: "/hello/:name") { (name: String) in
+    // Decodable
+
+    // 2. Decode url
+    server.route(get: "/hello/:string") { (name: String) in
         return "hey \(name)!"
     }
 
-    server.route(get: "/robot/:id") { (id: Int) in
-        return "Hello. My name is Robo\(id). I'm here to.. BSOD"
+    server.route(get: "/user/:integer") { (id: Int) in
+        return "get user where id=\(id)"
     }
 
-    // Reflection
-
-    // 3.1. get method
-    struct Page {
-        let name: String
-        let skip: Int
-    }
-    // you can mix values from url and query:
-    // example: /page/news?skip=2
-    server.route(get: "/page/:name") { (page: Page) in
-        return page
-    }
-
-    // 3.2. post data
-    struct TodoUpdate {
+    // 3. Custom model
+    struct Todo: Codable {
         let name: String
         let done: Bool
     }
-    // urlencoded example: name=sleep+sometimes&done=false
-    // json example: {"name": "sleep sometimes", "done": false}
-    server.route(post: "/todo") { (todo: TodoUpdate) in
-        return todo
-    }
-    // you can also mix values from url and post body:
-    // example: /todo/commitChanges
-    // post query: done=true
-    server.route(post: "/todo/:name") { (todo: TodoUpdate) in
-        return todo
-    }
-    // 3.3. serialize model into json
-    server.route(get: "/todo/as/json") {
-        return TodoUpdate(name: "serialized", done: true)
+
+    // 3.1. Encode response to json
+    server.route(get: "/todos") {
+        return [
+            Todo(name: "One", done: true),
+            Todo(name: "Two", done: false)
+        ]
     }
 
-    // 4. Use request & return handcoded json
-    server.route(get: "/request") { request in
-        return [
-            "method": String(describing: request.method),
-            "url": request.url.path,
-        ]
+    // 3.2. Decode request from json | form-urlencoded
+    server.route(post: "/todo") { (todo: Todo) in
+        return todo
+    }
+
+    // 4. Custom url & request model
+    struct Date: Decodable {
+        let day: Int
+        let month: String
+    }
+    struct Event: Decodable {
+        let name: String
+    }
+
+    // 4.1. Pass request & decode url + body
+    server.route(post: "/date/:month/:day")
+    { (request: Request, date: Date, event: Event) in
+        return "\(request.url) \(date) \(event)"
     }
 
     // 5. Wildcard
