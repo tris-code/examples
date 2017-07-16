@@ -49,10 +49,11 @@ fiber {
 // Activity indicator
 
 fiber {
-    while true {
+    for _ in 0..<300 {
         print(".", terminator: "")
         sleep(until: Date().addingTimeInterval(0.01))
     }
+    print("3 sec timeout")
 }
 
-FiberLoop.main.run(until: Date().addingTimeInterval(5))
+FiberLoop.main.run()
