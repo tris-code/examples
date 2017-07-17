@@ -40,12 +40,12 @@ print("tonyConverted: \(tonyConverted as Any)")
 print("tonyNil: \(tonyNil as Any)")
 print("tonyUser: \(tonyUser as Any)")
 
-print("fields:")
-let metadata = Metadata(of: User.self)
-for fieldType in metadata.fieldTypes {
-    print(fieldType)
+
+guard case .struct(let metadata) = Metadata(of: User.self) else {
+    fatalError("invalid metadata")
 }
 
-if metadata.kind == .struct {
-    print("surprise")
+print("fields:")
+for fieldType in metadata.descriptor.fieldTypes {
+    print(fieldType)
 }
