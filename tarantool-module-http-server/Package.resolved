@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/tris-foundation/json.git",
         "state": {
           "branch": null,
-          "revision": "6449d42bfa04b64b08ef7805a44c5944628a067c",
-          "version": "0.4.1"
+          "revision": "396f35e9f75e1c6516c4cae1681c045279d667ef",
+          "version": "0.4.2"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/tris-foundation/test.git",
         "state": {
           "branch": null,
-          "revision": "bdf2f691262c2824dee46dbdf7e9558ae0e172be",
-          "version": "0.4.2"
+          "revision": "817c01f8f53c988b5cfe55e4edbc85a9f1d00837",
+          "version": "0.4.3"
         }
       }
     ]

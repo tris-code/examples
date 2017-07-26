@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/tris-foundation/test.git",
         "state": {
           "branch": null,
-          "revision": "bdf2f691262c2824dee46dbdf7e9558ae0e172be",
-          "version": "0.4.2"
+          "revision": "817c01f8f53c988b5cfe55e4edbc85a9f1d00837",
+          "version": "0.4.3"
         }
       }
     ]
