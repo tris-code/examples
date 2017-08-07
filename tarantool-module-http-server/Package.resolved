@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
         "state": {
           "branch": null,
-          "revision": "0b812128f149aecfc625d75516d8f4a485931d3b",
-          "version": "0.4.1"
+          "revision": "3c97c6bdfe4b536b037799295b513377924635d5",
+          "version": "0.4.2"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/tris-foundation/network.git",
         "state": {
           "branch": null,
-          "revision": "a110fa8eede5d6f8751eb06f5e9b59a583e751e1",
-          "version": "0.4.1"
+          "revision": "9185735f390e68582bb3af4754421d4f5e9ff50c",
+          "version": "0.4.2"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
         "state": {
           "branch": null,
-          "revision": "956d98771468d7a0c0f1423788403426fb7beca5",
-          "version": "0.4.5"
+          "revision": "c84069929753389b621106bf16c7bad3ca2d0ff4",
+          "version": "0.4.6"
         }
       },
       {
