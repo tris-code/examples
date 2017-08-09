@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/tris-foundation/fiber.git",
         "state": {
           "branch": null,
-          "revision": "6c874e05667dbe43a6d76a405f36b039b39edb51",
-          "version": "0.4.8"
+          "revision": "f65db9cd3fc6c8ba43ae6d1bb7ae9835349d82d1",
+          "version": "0.4.9"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/tris-foundation/http.git",
         "state": {
           "branch": null,
-          "revision": "e3be7b3f690e01f23c9173163ed196f77247c6a1",
-          "version": "0.4.8"
+          "revision": "a26dbb0d721e5f35c0744b170a81cb3e2e49e786",
+          "version": "0.4.9"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
         "state": {
           "branch": null,
-          "revision": "c84069929753389b621106bf16c7bad3ca2d0ff4",
-          "version": "0.4.6"
+          "revision": "6450d424c34735dbe3d24ccb073334d2a14f10cd",
+          "version": "0.4.7"
         }
       },
       {

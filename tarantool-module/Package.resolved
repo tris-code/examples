@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/tris-foundation/tarantool.git",
         "state": {
           "branch": null,
-          "revision": "c84069929753389b621106bf16c7bad3ca2d0ff4",
-          "version": "0.4.6"
+          "revision": "6450d424c34735dbe3d24ccb073334d2a14f10cd",
+          "version": "0.4.7"
         }
       },
       {
