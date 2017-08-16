@@ -2,8 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "MessagePack",
-        "repositoryURL": "https://github.com/tris-foundation/messagepack.git",
+        "reference": {
+          "identity": "messagepack",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/messagepack.git"
+        },
         "state": {
           "branch": null,
           "revision": "3c97c6bdfe4b536b037799295b513377924635d5",
@@ -11,8 +14,11 @@
         }
       },
       {
-        "package": "Test",
-        "repositoryURL": "https://github.com/tris-foundation/test.git",
+        "reference": {
+          "identity": "test",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/test.git"
+        },
         "state": {
           "branch": null,
           "revision": "817c01f8f53c988b5cfe55e4edbc85a9f1d00837",
@@ -21,5 +27,5 @@
       }
     ]
   },
-  "version": 1
+  "version": 2
 }

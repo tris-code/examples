@@ -2,8 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "Async",
-        "repositoryURL": "https://github.com/tris-foundation/async.git",
+        "reference": {
+          "identity": "async",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/async.git"
+        },
         "state": {
           "branch": null,
           "revision": "341849c6e73a4365b73535429ff76de8cde52aa7",
@@ -11,8 +14,11 @@
         }
       },
       {
-        "package": "AsyncDispatch",
-        "repositoryURL": "https://github.com/tris-foundation/async-dispatch.git",
+        "reference": {
+          "identity": "async-dispatch",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/async-dispatch.git"
+        },
         "state": {
           "branch": null,
           "revision": "055a07445e15474f768e518bb7f0129376278694",
@@ -20,8 +26,11 @@
         }
       },
       {
-        "package": "Fiber",
-        "repositoryURL": "https://github.com/tris-foundation/fiber.git",
+        "reference": {
+          "identity": "fiber",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/fiber.git"
+        },
         "state": {
           "branch": null,
           "revision": "f65db9cd3fc6c8ba43ae6d1bb7ae9835349d82d1",
@@ -29,8 +38,11 @@
         }
       },
       {
-        "package": "HTTP",
-        "repositoryURL": "https://github.com/tris-foundation/http.git",
+        "reference": {
+          "identity": "http",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/http.git"
+        },
         "state": {
           "branch": null,
           "revision": "a26dbb0d721e5f35c0744b170a81cb3e2e49e786",
@@ -38,8 +50,11 @@
         }
       },
       {
-        "package": "JSON",
-        "repositoryURL": "https://github.com/tris-foundation/json.git",
+        "reference": {
+          "identity": "json",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/json.git"
+        },
         "state": {
           "branch": null,
           "revision": "396f35e9f75e1c6516c4cae1681c045279d667ef",
@@ -47,8 +62,11 @@
         }
       },
       {
-        "package": "Log",
-        "repositoryURL": "https://github.com/tris-foundation/log.git",
+        "reference": {
+          "identity": "log",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/log.git"
+        },
         "state": {
           "branch": null,
           "revision": "6ddd3d665d12fa143be610e40a58dc863763b70f",
@@ -56,8 +74,11 @@
         }
       },
       {
-        "package": "Network",
-        "repositoryURL": "https://github.com/tris-foundation/network.git",
+        "reference": {
+          "identity": "network",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/network.git"
+        },
         "state": {
           "branch": null,
           "revision": "9185735f390e68582bb3af4754421d4f5e9ff50c",
@@ -65,8 +86,11 @@
         }
       },
       {
-        "package": "Platform",
-        "repositoryURL": "https://github.com/tris-foundation/platform.git",
+        "reference": {
+          "identity": "platform",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/platform.git"
+        },
         "state": {
           "branch": null,
           "revision": "6e0f6b4905851110634976e993980abe42101949",
@@ -74,8 +98,11 @@
         }
       },
       {
-        "package": "Test",
-        "repositoryURL": "https://github.com/tris-foundation/test.git",
+        "reference": {
+          "identity": "test",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/test.git"
+        },
         "state": {
           "branch": null,
           "revision": "817c01f8f53c988b5cfe55e4edbc85a9f1d00837",
@@ -84,5 +111,5 @@
       }
     ]
   },
-  "version": 1
+  "version": 2
 }
