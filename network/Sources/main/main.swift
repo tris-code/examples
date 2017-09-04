@@ -5,17 +5,17 @@ import Foundation
 import AsyncFiber
 import AsyncDispatch
 
-// you can also use AsyncDispatch fallback
+// you can also use AsyncDispatch shim for test purposes
 // see the first README.md commit to get the idea
 
-let async = AsyncFiber()
+AsyncFiber().registerGlobal()
 
 let hello = [UInt8]("Hello, World!".utf8)
 let empty = [UInt8](repeating: 0, count: hello.count + 1)
 
 async.task {
     do {
-        let socket = try Socket(awaiter: async.awaiter)
+        let socket = try Socket()
             .bind(to: "127.0.0.1", port: 1111)
             .listen()
 
@@ -28,7 +28,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(awaiter: async.awaiter)
+        let socket = try Socket()
             .connect(to: "127.0.0.1", port: 1111)
 
         var buffer = empty
@@ -45,7 +45,7 @@ let udpServerAddress = try Socket.Address("127.0.0.1", port: 2222)
 
 async.task {
     do {
-        let socket = try Socket(type: .datagram, awaiter: async.awaiter)
+        let socket = try Socket(type: .datagram)
             .bind(to: udpServerAddress)
 
         var buffer = empty
@@ -59,7 +59,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(type: .datagram, awaiter: async.awaiter)
+        let socket = try Socket(type: .datagram)
 
         var buffer = empty
         _ = try socket.send(bytes: hello, to: udpServerAddress)
@@ -74,7 +74,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(family: .inet6, awaiter: async.awaiter)
+        let socket = try Socket(family: .inet6)
             .bind(to: "::1", port: 3333)
             .listen()
 
@@ -87,7 +87,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(family: .inet6, awaiter: async.awaiter)
+        let socket = try Socket(family: .inet6)
             .connect(to: "::1", port: 3333)
 
         var buffer = empty
@@ -110,7 +110,7 @@ unlink("/tmp/socketexample.sock")
 
 async.task {
     do {
-        let socket = try Socket(family: .local, type: type, awaiter: async.awaiter)
+        let socket = try Socket(family: .local, type: type)
             .bind(to: "/tmp/socketexample.sock")
             .listen()
 
@@ -123,7 +123,7 @@ async.task {
 
 async.task {
     do {
-        let socket = try Socket(family: .local, type: type, awaiter: async.awaiter)
+        let socket = try Socket(family: .local, type: type)
             .connect(to: "/tmp/socketexample.sock")
 
         var buffer = empty

@@ -4,8 +4,9 @@ import AsyncFiber
 import AsyncDispatch
 import Foundation
 
-let async = AsyncFiber()
-let server = try Server(host: "127.0.0.1", port: 9001, async: async)
+AsyncFiber().registerGlobal()
+
+let server = try Server(host: "127.0.0.1", port: 9001)
 
 struct Page: Encodable {
     let title: String

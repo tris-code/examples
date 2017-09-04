@@ -6,7 +6,7 @@ import Log
 struct SomeError: Error {}
 
 func runServer() throws {
-    let server = try Server(host: "0.0.0.0", port: 8080, async: AsyncTarantool())
+    let server = try Server(host: "0.0.0.0", port: 8080)
 
     let schema = try Schema(Box())
 
@@ -60,6 +60,7 @@ extension Response {
 
 @_silgen_name("entry_point")
 public func main() -> Int {
+    AsyncTarantool().registerGlobal()
     do {
         try runServer()
     } catch {

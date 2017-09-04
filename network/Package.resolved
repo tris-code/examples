@@ -9,8 +9,8 @@
         },
         "state": {
           "branch": null,
-          "revision": "341849c6e73a4365b73535429ff76de8cde52aa7",
-          "version": "0.4.8"
+          "revision": "ee360694126a29db08efd96bf839ca8aa5e77c6a",
+          "version": "0.4.10"
         }
       },
       {
@@ -21,8 +21,8 @@
         },
         "state": {
           "branch": null,
-          "revision": "055a07445e15474f768e518bb7f0129376278694",
-          "version": "0.4.4"
+          "revision": "9ee8e17769330ea389e31b325fb98878a1458f93",
+          "version": "0.4.6"
         }
       },
       {
@@ -33,8 +33,8 @@
         },
         "state": {
           "branch": null,
-          "revision": "63ab1308ee6cf7342b28645cac17fa11499ed1b0",
-          "version": "0.4.10"
+          "revision": "46616d65ebc675dc799adf50a4ad3cdb5708231e",
+          "version": "0.4.12"
         }
       },
       {
@@ -57,8 +57,8 @@
         },
         "state": {
           "branch": null,
-          "revision": "dc85c23cd7b7700fcd5c92ec98677d464271ee97",
-          "version": "0.4.3"
+          "revision": "701566e6cbbeb44144925a097035207a94b98b2f",
+          "version": "0.4.8"
         }
       },
       {
@@ -75,14 +75,26 @@
       },
       {
         "reference": {
+          "identity": "stream",
+          "isLocal": false,
+          "path": "https://github.com/tris-foundation/stream.git"
+        },
+        "state": {
+          "branch": null,
+          "revision": "595b0609f55ca47f136330fbf06641484ca64451",
+          "version": "0.4.1"
+        }
+      },
+      {
+        "reference": {
           "identity": "test",
           "isLocal": false,
           "path": "https://github.com/tris-foundation/test.git"
         },
         "state": {
           "branch": null,
-          "revision": "817c01f8f53c988b5cfe55e4edbc85a9f1d00837",
-          "version": "0.4.3"
+          "revision": "60a653128b4b169dfce3e4b2917af86313ef8c4e",
+          "version": "0.4.4"
         }
       }
     ]

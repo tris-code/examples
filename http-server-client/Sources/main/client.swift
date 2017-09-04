@@ -12,10 +12,10 @@ func print(_ request: () throws -> Response) {
     }
 }
 
-func runClient(async: Async) throws {
+func runClient() throws {
     async.task {
         do {
-            let client = try Client(async: async)
+            let client = try Client()
             try client.connect(to: "http://0.0.0.0:8080")
 
             print {

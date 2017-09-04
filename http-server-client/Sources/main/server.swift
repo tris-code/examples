@@ -1,9 +1,9 @@
 import Async
 import Server
 
-func runServer(async: Async) throws {
+func runServer() throws {
     // 0. Create server
-    let server = try Server(host: "0.0.0.0", port: 8080, async: async)
+    let server = try Server(host: "0.0.0.0", port: 8080)
 
     // 1. Simple route
     server.route(get: "/hello") {

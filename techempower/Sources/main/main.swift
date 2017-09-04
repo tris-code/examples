@@ -6,9 +6,10 @@ import Foundation
 
 Log.disabled = true
 
+AsyncFiber().registerGlobal()
+
 func startServer() throws {
-    let async = AsyncFiber()
-    let server = try Server(host: "0.0.0.0", reusePort: 8080, async: async)
+    let server = try Server(host: "0.0.0.0", reusePort: 8080)
 
     server.route(get: "/plaintext") {
         return "Hello, World!"
