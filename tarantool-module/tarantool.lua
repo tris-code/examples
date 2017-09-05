@@ -1,9 +1,9 @@
 #!/usr/bin/env tarantool
 
-local swiftModule = 'module'
+local swift_module_name = 'SwiftTarantoolModule'
 package.cpath =
-    '.build/debug/lib'..swiftModule..'.so;.build/debug/lib'..swiftModule..'.dylib;'..
-    '.build/release/lib'..swiftModule..'.so;.build/release/lib'..swiftModule..'.dylib;'..
+    '.build/debug/lib'..swift_module_name..'.so;.build/debug/lib'..swift_module_name..'.dylib;'..
+    '.build/release/lib'..swift_module_name..'.so;.build/release/lib'..swift_module_name..'.dylib;'..
     package.cpath
 
 os.execute("mkdir -p data")
@@ -18,7 +18,10 @@ box.cfg {
 }
 
 -- init swift module
-require(swiftModule)
+local swift = require(swift_module_name)
+
+print(swift.func1())
+print(swift.func2())
 
 -- create data space
 local data = box.schema.create_space('data', {if_not_exists = true})
