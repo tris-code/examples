@@ -24,7 +24,6 @@ let package = Package(
             dependencies: [
                 "Log",
                 "Server",
-                "Fiber",
                 "AsyncFiber"
             ]
         )

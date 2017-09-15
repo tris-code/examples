@@ -1,7 +1,6 @@
 import Log
 import Server
 import AsyncFiber
-import AsyncDispatch
 import Foundation
 
 AsyncFiber().registerGlobal()

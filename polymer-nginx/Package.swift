@@ -14,10 +14,6 @@ let package = Package(
             from: "0.4.0"
         ),
         .package(
-            url: "https://github.com/tris-foundation/async-dispatch.git",
-            from: "0.4.0"
-        ),
-        .package(
             url: "https://github.com/tris-foundation/fiber.git",
             from: "0.4.0"
         ),
@@ -32,9 +28,7 @@ let package = Package(
             dependencies: [
                 "Log",
                 "Server",
-                "Fiber",
-                "AsyncFiber",
-                "AsyncDispatch"
+                "AsyncFiber"
             ]
         )
     ]
