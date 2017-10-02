@@ -12,4 +12,8 @@ try socketExample()
 let echo = EchoServer(at: "127.0.0.1", port: 4000)
 echo.run()
 
+let binary = BinaryProtocol(at: "127.0.0.1", port: 4001)
+binary.run()
+binary.ping()
+
 async.loop.run()
