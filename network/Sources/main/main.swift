@@ -10,4 +10,4 @@ AsyncDispatch().registerGlobal()
 try socketExample()
 
 
-async.loop.run(until: Date().addingTimeInterval(0.1))
+async.loop.run()
