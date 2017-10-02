@@ -97,6 +97,7 @@ class BinaryProtocol {
                         try stream.flush()
                     } catch where error is NetworkStream.Error {
                         // connection closed
+                        return
                     }
                 }
             } catch {
