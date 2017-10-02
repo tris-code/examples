@@ -9,5 +9,7 @@ AsyncDispatch().registerGlobal()
 
 try socketExample()
 
+// $ telnet 127.0.0.1 4000
+try echoServer(at: "127.0.0.1", port: 4000)
 
 async.loop.run()
