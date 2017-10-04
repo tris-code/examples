@@ -41,9 +41,8 @@ class Broadcast {
             do {
                 let message = [UInt8]("Hello".utf8)
 
-                let client = try Socket(type: .datagram).configure { options in
-                    options.broadcast = true
-                }
+                let client = try Socket(type: .datagram)
+                try client.options.set(.broadcast, true)
 
                 let address = try Socket.Address(
                     "255.255.255.255",port: self.port)

@@ -94,9 +94,9 @@ func socketExample() throws {
 
 
 #if os(Linux)
-    let type: Socket.SocketType = .sequenced
+    let type: Socket.`Type` = .sequenced
 #else
-    let type: Socket.SocketType = .stream
+    let type: Socket.`Type` = .stream
 #endif
 
     unlink("/tmp/socketexample.sock")
