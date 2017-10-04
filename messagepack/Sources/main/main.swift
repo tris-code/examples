@@ -7,7 +7,7 @@ do {
         print("original value: \(original)")
     }
 
-    var encoder = MessagePackWriter(OuputByteStream())
+    var encoder = MessagePackWriter(OutputByteStream())
     try encoder.encode(.string("one"))
     try encoder.encode(.int(2))
     try encoder.encode(.double(3.0))
