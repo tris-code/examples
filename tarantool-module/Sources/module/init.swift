@@ -1,9 +1,12 @@
 import CTarantool
+import AsyncTarantool
 
 // called by require('SwiftTarantoolModule') from tarantool.lua
 
 @_silgen_name("luaopen_SwiftTarantoolModule")
 public func open(L: OpaquePointer!) -> Int32 {
+    // use tarantool fibers in async
+    AsyncTarantool().registerGlobal()
     // you can also export your functions to Lua
     // without registering it as box stored procedures
     let exports: [(name: String, pointer: lua_CFunction)] = [

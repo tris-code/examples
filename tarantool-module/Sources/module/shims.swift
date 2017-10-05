@@ -21,9 +21,14 @@ public func getFooShim(context: BoxContext) -> BoxResult {
 }
 
 @_silgen_name("getCount")
-public func getCountShim(context: BoxContext, argsStart: UnsafePointer<UInt8>, argsEnd: UnsafePointer<UInt8>) -> BoxResult {
+public func getCountShim(
+    context: BoxContext,
+    argsStart: UnsafePointer<UInt8>,
+    argsEnd: UnsafePointer<UInt8>
+) -> BoxResult {
     do {
-        let object = try MessagePack.decode(bytes: argsStart, count: argsEnd - argsStart)
+        let object = try MessagePack.decode(from: InputRawStream(
+            pointer: argsStart, count: argsEnd - argsStart))
         guard let args = [MessagePack](object) else {
             throw ModuleError(description: "expected msgpack array")
         }

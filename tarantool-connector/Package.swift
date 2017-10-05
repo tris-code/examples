@@ -8,9 +8,15 @@ let package = Package(
         .package(
             url: "https://github.com/tris-foundation/tarantool.git",
             from: "0.4.0"
+        ),
+        .package(
+            url: "https://github.com/tris-foundation/fiber.git",
+            from: "0.4.0"
         )
     ],
     targets: [
-        .target(name: "main", dependencies: ["TarantoolConnector"])
+        .target(
+            name: "main",
+            dependencies: ["TarantoolConnector", "AsyncFiber"])
     ]
 )
