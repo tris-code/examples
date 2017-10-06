@@ -18,16 +18,16 @@ async.task {
         }
 
         // select by key
-        let equal = try test.select(.eq, keys: [3])
+        let equal = try test.select(iterator: .eq, keys: [3])
         equal.forEach { print($0) }
 
         // select all
-        let all = try test.select(.all)
+        let all = try test.select(iterator: .all)
         all.forEach { print($0) }
 
         // replace
         try test.replace([42, "Answer to the Ultimate Question of Life, The Universe, and Everything"])
-        if let answer = try test.get([42]) {
+        if let answer = try test.get(keys: [42]) {
             print(answer)
         }
 
@@ -48,7 +48,7 @@ async.task {
         // autoincrementing index
         try newSpace.insert([nil, "test1"])
         try newSpace.insert([nil, "test2"])
-        let newResult = try newSpace.select(.all)
+        let newResult = try newSpace.select(iterator: .all)
         newResult.forEach { print($0) }
     } catch {
         print(error)

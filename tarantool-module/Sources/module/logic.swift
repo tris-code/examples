@@ -18,7 +18,7 @@ func getFoo() throws -> MessagePack {
 
     try space.replace(["foo", "bar"])
 
-    guard let result = try space.get(["foo"]) else {
+    guard let result = try space.get(keys: ["foo"]) else {
         throw BoxError(code: .tupleNotFound, message: "foo not found")
     }
     return .array(result.rawValue)

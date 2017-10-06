@@ -18,7 +18,7 @@ func runServer() throws {
     var counter = 0
 
     server.route(get: "/json") {
-        let tuples = try space.select(.all)
+        let tuples = try space.select(iterator: .all)
         return try Response(serializing: tuples)
     }
 
@@ -33,7 +33,7 @@ func runServer() throws {
             throw SomeError()
         }
 
-        guard let result = try space.get(["foo"]) else {
+        guard let result = try space.get(keys: ["foo"]) else {
             Log.error("foo not found")
             return Response(status: .notFound)
         }
