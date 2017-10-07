@@ -30,7 +30,6 @@ extension BinaryMessage {
             throw BinaryError.inputError
         }
         self.data = data
-
     }
 
     func encode<T: OutputStream>(to stream: T) throws {
@@ -135,29 +134,6 @@ class BinaryProtocol {
                 print("binary protocol reply: \(reply)")
             } catch {
                 print("ping error: \(error)")
-            }
-        }
-    }
-}
-
-extension InputStream {
-    func read<T: Numeric>(_ type: T.Type) throws -> T {
-        var value: T = 0
-        try withUnsafeMutableBytes(of: &value) { buffer in
-            guard try read(to: buffer) == buffer.count else {
-                throw BinaryError.inputError
-            }
-        }
-        return value
-    }
-}
-
-extension OutputStream {
-    func write<T: Numeric>(_ value: T) throws {
-        var value = value
-        try withUnsafeBytes(of: &value) { buffer in
-            guard try write(buffer) == buffer.count else {
-                throw BinaryError.outputError
             }
         }
     }
