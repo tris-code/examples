@@ -45,17 +45,18 @@ private func export(
 }
 
 public func call(L: OpaquePointer!) -> Int32 {
+    let lua = Lua(stack: L)
     do {
-        guard let name = String(try Lua.popFirst(from: L)),
+        guard let name = String(try lua.popFirst()),
             let task = tasks[name] else {
                 return -1
         }
-        let arguments = try Lua.popValues(from: L!)
+        let arguments = try lua.popValues()
         let result = try task(arguments)
-        try Lua.push(values: result, to: L!)
-        return Int32(result.count)
+        try lua.push(.array([.array(result)]))
+        return 1
     } catch {
-        try! Lua.push(values: [.string("\(error)")], to: L!)
+        try! lua.push(values: [.string("\(error)")])
         return -1
     }
 }
