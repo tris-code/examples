@@ -6,10 +6,9 @@ AsyncFiber().registerGlobal()
 
 async.task {
     do {
-        let connection = try IProtoConnection(host: "127.0.0.1")
-        try connection.auth(username: "tester", password: "tester")
+        let iproto = try IProto(host: "127.0.0.1")
+        try iproto.auth(username: "tester", password: "tester")
 
-        let iproto = IProto(connection: connection)
         var schema = try Schema(iproto)
 
         guard let test = schema.spaces["test"] else {
@@ -32,12 +31,12 @@ async.task {
         }
 
         // eval example
-        let result = try iproto.eval("return 40 + 2")
+        let result = try iproto.eval("return 3 + 0.14")
         print(result)
 
         // create space & index
         if schema.spaces["new_space"] == nil {
-            try connection.auth(username: "admin", password: "admin")
+            try iproto.auth(username: "admin", password: "admin")
             var space = try schema.createSpace(name: "new_space")
             try space.createIndex(name: "new_index", sequence: true)
         }

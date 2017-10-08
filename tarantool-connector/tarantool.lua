@@ -4,10 +4,11 @@ os.execute("mkdir -p data")
 
 box.cfg {
     listen = 3301,
-    snap_dir = "data",
+    log='data/tarantool.log',
     wal_dir = "data",
+    memtx_dir = "data",
     vinyl_dir = "data",
-    slab_alloc_arena=0.2
+    memtx_memory=209715200 -- limit memory to 200mb to run on cheap virtual servers
 }
 
 box.schema.user.passwd('admin', 'admin')
@@ -23,3 +24,5 @@ end
 test:replace({1, 'foo'})
 test:replace({2, 'bar'})
 test:replace({3, 'baz'})
+
+print("started")
