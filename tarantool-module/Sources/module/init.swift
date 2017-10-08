@@ -3,9 +3,9 @@ import AsyncTarantool
 import TarantoolModule
 import MessagePack
 
-// called by require('SwiftTarantoolModule') from tarantool.lua
+// called by require('swift_tarantool_module') from tarantool.lua
 
-@_silgen_name("luaopen_SwiftTarantoolModule")
+@_silgen_name("luaopen_swift_tarantool_module")
 public func open(L: OpaquePointer!) -> Int32 {
     // use tarantool fibers in async
     AsyncTarantool().registerGlobal()
@@ -22,7 +22,29 @@ public func open(L: OpaquePointer!) -> Int32 {
     return Int32(tasks.count)
 }
 
-typealias SwiftProcedure = ([MessagePack]) throws -> [MessagePack]
+public struct Output {
+    let lua: Lua
+    var count: Int
+
+    init(lua: Lua) {
+        self.lua = lua
+        self.count = 0
+    }
+
+    public mutating func append(_ tuple: Box.Tuple) throws {
+        try lua.push(.array(tuple.unpack()))
+        lua.rawSet(toTableAt: -2, at: count + 1)
+        count += 1
+    }
+
+    public mutating func append(_ tuple: [MessagePack]) throws {
+        try lua.push(.array(tuple))
+        lua.rawSet(toTableAt: -2, at: count + 1)
+        count += 1
+    }
+}
+
+typealias SwiftProcedure = ([MessagePack], inout Output) throws -> Void
 typealias RegisterProcedure = (_ name: String, @escaping SwiftProcedure) -> Void
 
 var tasks: [String : SwiftProcedure] = [:]
@@ -52,8 +74,10 @@ public func call(L: OpaquePointer!) -> Int32 {
                 return -1
         }
         let arguments = try lua.popValues()
-        let result = try task(arguments)
-        try lua.push(.array([.array(result)]))
+        lua.createTable()
+        var output = Output(lua: lua)
+        try task(arguments, &output)
+        lua.setTypeHint(forTableAt: -1, type: .array)
         return 1
     } catch {
         try! lua.push(values: [.string("\(error)")])

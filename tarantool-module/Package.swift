@@ -5,7 +5,10 @@ import PackageDescription
 let package = Package(
     name: "tarantool-module-example",
     products: [
-        .library(name: "SwiftTarantoolModule", type: .dynamic, targets: ["module"])
+        .library(
+            name: "swift_tarantool_module",
+            type: .dynamic,
+            targets: ["module"])
     ],
     dependencies: [
         .package(

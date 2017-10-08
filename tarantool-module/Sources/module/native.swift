@@ -9,52 +9,57 @@ import TarantoolModule
 //   3. add of fix @_silgen_name("")
 //   2. modify lua bootstrap script
 
-@_silgen_name("helloSwiftNative")
-public func helloSwift(context: BoxContext) -> BoxResult {
-    return Box.convertCall(context) {
-        return [.string("hello from swift")]
+@_silgen_name("hello_swift_native")
+public func helloSwift(context: Box.Context) -> Box.Result {
+    return Box.convertCall(context) { output in
+        try output.append(["hello"])
+        try output.append(["from"])
+        try output.append(["swift"])
     }
 }
 
-@_silgen_name("getFooNative")
-public func getFoo(context: BoxContext) -> BoxResult {
-    return Box.convertCall(context) {
+@_silgen_name("get_foo_native")
+public func getFoo(context: Box.Context) -> Box.Result {
+    return Box.convertCall(context) { output in
         guard let space = schema.spaces["data"] else {
-            throw BoxError(code: .noSuchSpace, message: "space: 'data'")
+            throw Box.Error(code: .noSuchSpace, message: "space: 'data'")
         }
 
         try space.replace(["foo", "bar"])
 
         guard let result = try space.get(keys: ["foo"]) else {
-            throw BoxError(code: .tupleNotFound, message: "keys: foo")
+            throw Box.Error(code: .tupleNotFound, message: "keys: foo")
         }
-        return result.rawValue
+        try output.append(result)
+        try output.append(result)
     }
 }
 
-@_silgen_name("getCountNative")
+@_silgen_name("get_count_native")
 public func getCount(
-    context: BoxContext,
+    context: Box.Context,
     start: UnsafePointer<UInt8>,
     end: UnsafePointer<UInt8>
-) -> BoxResult {
-    return Box.convertCall(context, start, end) { arguments in
+) -> Box.Result {
+    return Box.convertCall(context, start, end) { arguments, output in
         guard let name = String(arguments.first) else {
             throw ModuleError(description: "incorrect space name argument")
         }
 
         guard let space = schema.spaces[name] else {
-            throw BoxError(code: .noSuchSpace, message: "space: '\(name)'")
+            throw Box.Error(code: .noSuchSpace, message: "space: '\(name)'")
         }
 
         let count = try space.count()
-        return [.int(count)]
+        try output.append([.int(count)])
     }
 }
 
-@_silgen_name("evalLuaScriptNative")
-public func evalLuaScript(context: BoxContext) -> BoxResult {
-    return Box.convertCall(context) {
-        return try Lua.eval("return 40 + 2")
+@_silgen_name("eval_lua_native")
+public func evalLuaScript(context: Box.Context) -> Box.Result {
+    return Box.convertCall(context) { output in
+        var result = try Lua.eval("return 40 + 2")
+        result.insert("eval result", at: 0)
+        try output.append(result)
     }
 }

@@ -5,19 +5,20 @@ AsyncFiber().registerGlobal()
 
 async.task {
     do {
-        let iproto = try IProtoConnection(host: "127.0.0.1")
+        let iproto = try IProto(host: "127.0.0.1")
 
-        print(try iproto.call("helloLua"))
+        print(try iproto.call("hello_swift_native"))
+        print(try iproto.call("get_foo_native"))
+        print(try iproto.call("get_count_native", arguments: ["test"]))
+        print(try iproto.call("eval_lua_native"))
         print()
-        print(try iproto.call("helloSwiftNative"))
-        print(try iproto.call("getFooNative"))
-        print(try iproto.call("getCountNative", arguments: ["test"]))
-        print(try iproto.call("evalLuaScriptNative"))
+        print(try iproto.call("hello_swift"))
+        print(try iproto.call("get_foo"))
+        print(try iproto.call("get_count", arguments: ["test"]))
+        print(try iproto.call("eval_lua"))
         print()
-        print(try iproto.call("helloSwift"))
-        print(try iproto.call("getFoo"))
-        print(try iproto.call("getCount", arguments: ["test"]))
-        print(try iproto.call("evalLuaScript"))
+        print(try iproto.call("test_lua"))
+
     } catch {
         print(error)
     }

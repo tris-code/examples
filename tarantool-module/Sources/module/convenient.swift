@@ -8,37 +8,42 @@ import TarantoolModule
 //   1. call RegisterProcedure function
 
 func registerProcedures(procedure: RegisterProcedure) {
-    procedure("helloSwift") { arguments in
-        return [.string("hello from swift")]
+    procedure("hello_swift") { _, output in
+        try output.append(["hewllo"])
+        try output.append(["from"])
+        try output.append(["swift"])
     }
 
-    procedure("getFoo") { _ in
+    procedure("get_foo") { _, output in
         guard let space = schema.spaces["data"] else {
-            throw BoxError(code: .noSuchSpace, message: "space: 'data'")
+            throw Box.Error(code: .noSuchSpace, message: "space: 'data'")
         }
 
         try space.replace(["foo", "bar"])
 
         guard let result = try space.get(keys: ["foo"]) else {
-            throw BoxError(code: .tupleNotFound, message: "keys: foo")
+            throw Box.Error(code: .tupleNotFound, message: "keys: foo")
         }
-        return result.rawValue
+        try output.append(result)
+        try output.append(result)
     }
 
-    procedure("getCount") { arguments in
+    procedure("get_count") { arguments, output in
         guard let name = String(arguments.first) else {
             throw ModuleError(description: "incorrect space name argument")
         }
 
         guard let space = schema.spaces[name] else {
-            throw BoxError(code: .noSuchSpace, message: "space: '\(name)'")
+            throw Box.Error(code: .noSuchSpace, message: "space: '\(name)'")
         }
 
         let count = try space.count()
-        return [.int(count)]
+        try output.append([.int(count)])
     }
 
-    procedure("evalLuaScript") { arguments in
-        return try Lua.eval("return 40 + 2")
+    procedure("eval_lua") { arguments, output in
+        var result = try Lua.eval("return 40 + 2")
+        result.insert("eval result", at: 0)
+        try output.append(result)
     }
 }
