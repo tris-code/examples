@@ -45,10 +45,10 @@ func runServer() throws {
 }
 
 extension Response {
-    init<T: Tuple>(serializing tuples: AnySequence<T>) throws {
+    init<T: Tarantool.Tuple>(serializing tuples: AnySequence<T>) throws {
         var strings = [String]()
         for tuple in tuples {
-            strings.append(String(describing: tuple.rawValue))
+            strings.append(String(describing: tuple.unpack()))
         }
         let result = "[\(strings.joined(separator: ", "))]"
         var response = Response()

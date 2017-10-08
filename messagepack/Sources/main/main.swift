@@ -1,3 +1,4 @@
+import Stream
 import MessagePack
 
 do {

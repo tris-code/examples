@@ -14,7 +14,7 @@ enum BinaryError: Error {
 }
 
 extension BinaryMessage {
-    init<T: InputStream>(from stream: T) throws {
+    init<T: InputStream>(from stream: inout T) throws {
         self.code = try stream.read(Int.self)
 
         let messageLength = try stream.read(Int.self)
@@ -32,7 +32,7 @@ extension BinaryMessage {
         self.data = data
     }
 
-    func encode<T: OutputStream>(to stream: T) throws {
+    func encode<T: OutputStream>(to stream: inout T) throws {
         try stream.write(code)
 
         let messageBytes = [UInt8](message.utf8)
@@ -84,15 +84,15 @@ class BinaryProtocol {
     func handleClient(_ client: Socket) {
         async.task {
             do {
-                let stream = BufferedStream(
+                var stream = BufferedStream(
                     stream: NetworkStream(socket: client),
                     capacity: 4096
                 )
 
                 while true {
                     do {
-                        let message = try BinaryMessage(from: stream)
-                        try message.reversed().encode(to: stream)
+                        let message = try BinaryMessage(from: &stream)
+                        try message.reversed().encode(to: &stream)
                         try stream.flush()
                     } catch where error is NetworkStream.Error {
                         // connection closed
@@ -116,15 +116,15 @@ class BinaryProtocol {
                 let server = try Socket()
                     .connect(to: self.host, port: self.port)
 
-                let stream = BufferedStream(
+                var stream = BufferedStream(
                     stream: NetworkStream(socket: server),
                     capacity: 4096
                 )
 
-                try message.encode(to: stream)
+                try message.encode(to: &stream)
                 try stream.flush()
 
-                let reply = try BinaryMessage(from: stream)
+                let reply = try BinaryMessage(from: &stream)
                 guard reply.code == ~message.code,
                     reply.message == String(message.message.reversed()),
                     reply.data == message.data.reversed() else {
