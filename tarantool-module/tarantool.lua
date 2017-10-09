@@ -28,6 +28,9 @@ data:create_index('primary', { parts = {1, 'STR'}, if_not_exists = true})
 -- init swift module
 swift = require(swift_module_name)
 
+swift.exported1()
+swift.exported2()
+
 -- 1. native way
 box.schema.func.create('hello_swift_native', {language = "C", if_not_exists = true})
 box.schema.func.create('get_foo_native', {language = "C", if_not_exists = true})

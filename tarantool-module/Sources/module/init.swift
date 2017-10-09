@@ -24,7 +24,49 @@ public func open(L: OpaquePointer!) -> Int32 {
         lua.setGlobal(name: name)
     }
 
+    // usual module exports example
+
+    func register(_ regs: [Reg]) {
+        // we need to keep string pointers alive
+        withUnsafeRegs(regs) { luaRegs in
+            lua.setFuncs(luaRegs)
+        }
+    }
+
+    register([
+        Reg(name: "exported1", function: exported1),
+        Reg(name: "exported2", function: exported2)
+    ])
+
+    // we can also export the to the global scope
+    lua.pushValue(at: -1) // copy the table
+    lua.setGlobal(name: "swift_tarantool_module")
+
     return 1
+}
+
+struct Reg {
+    let name: String
+    let function: lua_CFunction
+}
+
+func withUnsafeRegs(_ regs: [Reg], _ task: ([luaL_Reg]) -> Void) {
+    var luaRegs = regs.map { reg in
+        luaL_Reg(name: strdup(reg.name), func: reg.function)
+    }
+    luaRegs.append(luaL_Reg(name: nil, func: nil))
+    task(luaRegs)
+    luaRegs.forEach { free(UnsafeMutableRawPointer(mutating: $0.name)) }
+}
+
+public func exported1(L: OpaquePointer!) -> Int32 {
+    print("exported 1")
+    return 0
+}
+
+public func exported2(L: OpaquePointer!) -> Int32 {
+    print("exported 2")
+    return 0
 }
 
 //******************************************************************************
