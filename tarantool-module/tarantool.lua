@@ -34,16 +34,6 @@ box.schema.func.create('get_foo_native', {language = "C", if_not_exists = true})
 box.schema.func.create('get_count_native', {language = "C", if_not_exists = true})
 box.schema.func.create('eval_lua_native', {language = "C", if_not_exists = true})
 
--- 2. convenient way
-for key, value in pairs(swift) do
-    _G[key] = function( ... )
-        -- pass the function name with arguments
-        return swift[key](key, ...)
-    end
-    print('lua: creating '..key..' function')
-    box.schema.func.create(key, {if_not_exists = true})
-end
-
 -- guest user rights
 box.schema.user.grant('guest', 'read,write,execute', 'universe', nil, {if_not_exists = true})
 

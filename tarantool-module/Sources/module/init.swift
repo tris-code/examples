@@ -16,10 +16,15 @@ public func open(L: OpaquePointer!) -> Int32 {
     // 2. register stored procedures
     registerProcedures(procedure: registerFunction)
 
+    let lua = Lua(stack: L)
+
     for (name, _) in tasks {
-        export(L, name, call)
+        lua.push(name)
+        lua.push(closure, upValuesCount: 1)
+        lua.setGlobal(name: name)
     }
-    return Int32(tasks.count)
+
+    return 1
 }
 
 //******************************************************************************
@@ -56,24 +61,10 @@ func registerFunction(name: String, task: @escaping SwiftProcedure) {
     tasks[name] = task
 }
 
-private func export(
-    _ L: OpaquePointer!,
-    _ name: String,
-    _ function: @escaping lua_CFunction
-) {
-    name.withCString { ptr in
-        let regs = [
-            luaL_Reg(name: ptr, func: function),
-            luaL_Reg(name: nil, func: nil)
-        ]
-        _luaL_register(L, "SwiftTarantoolModule", regs)
-    }
-}
-
-public func call(L: OpaquePointer!) -> Int32 {
+public func closure(L: OpaquePointer!) -> Int32 {
     let lua = Lua(stack: L)
     do {
-        guard let name = String(try lua.popFirst()),
+        guard let name = lua.get(String.self, at: lua.upValueIndex(1)),
             let task = tasks[name] else {
                 return -1
         }
@@ -84,7 +75,7 @@ public func call(L: OpaquePointer!) -> Int32 {
         lua.setTypeHint(forTableAt: -1, type: .array)
         return 1
     } catch {
-        try! lua.push(values: [.string("\(error)")])
+        lua.push("\(error)")
         return -1
     }
 }

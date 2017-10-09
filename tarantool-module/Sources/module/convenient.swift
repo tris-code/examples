@@ -7,13 +7,9 @@ import TarantoolModule
 // To add a new function you have to:
 //   1. call RegisterProcedure function
 
-//******************************************************************************
-//* WARING: THIS IS A COMPLETE HACK, JUST A TRY TO FIND A BETTER WAY           *
-//******************************************************************************
-
 func registerProcedures(procedure: RegisterProcedure) {
     procedure("hello_swift") { _, output in
-        try output.append(["hewllo"])
+        try output.append(["hello"])
         try output.append(["from"])
         try output.append(["swift"])
     }
