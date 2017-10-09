@@ -31,7 +31,6 @@ public func getFoo(context: Box.Context) -> Box.Result {
             throw Box.Error(code: .tupleNotFound, message: "keys: foo")
         }
         try output.append(result)
-        try output.append(result)
     }
 }
 
@@ -58,7 +57,7 @@ public func getCount(
 @_silgen_name("eval_lua_native")
 public func evalLuaScript(context: Box.Context) -> Box.Result {
     return Box.convertCall(context) { output in
-        var result = try Lua.eval("return 40 + 2")
+        var result = try Lua.eval("return 3 + 0.14")
         result.insert("eval result", at: 0)
         try output.append(result)
     }

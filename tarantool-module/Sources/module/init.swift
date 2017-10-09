@@ -22,6 +22,10 @@ public func open(L: OpaquePointer!) -> Int32 {
     return Int32(tasks.count)
 }
 
+//******************************************************************************
+//* WARING: THIS IS A COMPLETE HACK, JUST A TRY TO FIND A BETTER WAY           *
+//******************************************************************************
+
 public struct Output {
     let lua: Lua
     var count: Int

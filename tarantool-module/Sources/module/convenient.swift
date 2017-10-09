@@ -7,6 +7,10 @@ import TarantoolModule
 // To add a new function you have to:
 //   1. call RegisterProcedure function
 
+//******************************************************************************
+//* WARING: THIS IS A COMPLETE HACK, JUST A TRY TO FIND A BETTER WAY           *
+//******************************************************************************
+
 func registerProcedures(procedure: RegisterProcedure) {
     procedure("hello_swift") { _, output in
         try output.append(["hewllo"])
@@ -25,7 +29,6 @@ func registerProcedures(procedure: RegisterProcedure) {
             throw Box.Error(code: .tupleNotFound, message: "keys: foo")
         }
         try output.append(result)
-        try output.append(result)
     }
 
     procedure("get_count") { arguments, output in
@@ -42,7 +45,7 @@ func registerProcedures(procedure: RegisterProcedure) {
     }
 
     procedure("eval_lua") { arguments, output in
-        var result = try Lua.eval("return 40 + 2")
+        var result = try Lua.eval("return 3 + 0.14")
         result.insert("eval result", at: 0)
         try output.append(result)
     }
