@@ -38,7 +38,7 @@ public func open(L: OpaquePointer!) -> Int32 {
         Reg(name: "exported2", function: exported2)
     ])
 
-    // we can also export the to the global scope
+    // we can also export them to the global scope
     lua.pushValue(at: -1) // copy the table
     lua.setGlobal(name: "swift_tarantool_module")
 
