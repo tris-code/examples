@@ -33,6 +33,8 @@ public func open(L: OpaquePointer!) -> Int32 {
         }
     }
 
+    lua.createTable()
+
     register([
         Reg(name: "exported1", function: exported1),
         Reg(name: "exported2", function: exported2)
