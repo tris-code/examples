@@ -2,8 +2,6 @@ import Log
 import AsyncFiber
 import AsyncDispatch
 
-Log.disabled = false // default is false
-
 // AsyncFiber - cooperative multitasking,
 // runs new fiber for each connection
 
