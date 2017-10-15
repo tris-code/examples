@@ -4,7 +4,7 @@ import Dispatch
 import AsyncFiber
 import Foundation
 
-Log.disabled = true
+Log.enabled = false
 
 AsyncFiber().registerGlobal()
 
