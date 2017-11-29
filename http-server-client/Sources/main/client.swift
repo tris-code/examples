@@ -13,58 +13,59 @@ func print(_ request: () throws -> Response) {
 }
 
 func runClient() throws {
-    async.task {
-        do {
-            let client = try Client()
-            try client.connect(to: "http://0.0.0.0:8080")
+    let client = try Client()
+    try client.connect(to: "http://0.0.0.0:8080")
 
-            print {
-                try client.get("/hello")
-            }
+    print {
+        try client.get("/hello")
+    }
 
-            print {
-                try client.get("/hello/username")
-            }
+    print {
+        try client.get("/привет")
+    }
 
-            print {
-                try client.get("/user/8")
-            }
+    print {
+        try client.get("/request")
+    }
 
-            print {
-                try client.get("/todos")
-            }
+    print {
+        try client.get("/page/news")
+    }
 
-            struct Todo: Encodable {
-                let name: String
-                let done: Bool
-            }
+    print {
+        try client.get("/user/8")
+    }
 
-            print {
-                try client.post("/todo", json: Todo(
-                    name: "sleep sometimes (from json)",
-                    done: false))
-            }
+    print {
+        try client.get("/todos")
+    }
 
-            print {
-                try client.post("/todo", urlEncoded: Todo(
-                    name: "sleep sometimes (from urlencoded)",
-                    done: false))
-            }
+    struct Todo: Encodable {
+        let name: String
+        let done: Bool
+    }
 
-            struct Event: Encodable {
-                let name: String
-            }
+    print {
+        try client.post("/todo", json: Todo(
+            name: "sleep sometimes (from json)",
+            done: false))
+    }
 
-            print {
-                try client.post("/date/May/8", json: Event(name: "Dance"))
-            }
+    print {
+        try client.post("/todo", urlEncoded: Todo(
+            name: "sleep sometimes (from urlencoded)",
+            done: false))
+    }
 
-            print {
-                try client.get("/whatdoesmarcelluswallacelooklike")
-            }
-        } catch {
-            print(error)
-            exit(1)
-        }
+    struct Event: Encodable {
+        let name: String
+    }
+
+    print {
+        try client.post("/date/May/8", json: Event(name: "Dance"))
+    }
+
+    print {
+        try client.get("/whatdoesmarcelluswallacelooklike")
     }
 }

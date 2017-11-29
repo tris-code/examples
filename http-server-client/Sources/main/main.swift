@@ -1,4 +1,5 @@
 import Log
+import Platform
 import AsyncFiber
 import AsyncDispatch
 
@@ -15,7 +16,22 @@ import AsyncDispatch
 
 AsyncFiber().registerGlobal()
 
-try runServer()
-try runClient()
+async.task {
+    do {
+        try runServer()
+    } catch {
+        print(String(describing: error))
+        exit(1)
+    }
+}
+
+async.task {
+    do {
+        try runClient()
+    } catch {
+        print(String(describing: error))
+        exit(1)
+    }
+}
 
 async.loop.run()

@@ -5,29 +5,40 @@ func runServer() throws {
     // 0. Create server
     let server = try Server(host: "0.0.0.0", port: 8080)
 
-    // 1. Simple route
+    // 1. Simple routes
+    // supported methods: get, head, post, put, delete, options, all
+
+    // ascii
     server.route(get: "/hello") {
         return "hey there!"
     }
 
-    // Decodable
+    // unicode
+    server.route(get: "/привет") {
+        return "привет!"
+    }
 
-    // 2. Decode url
-    server.route(get: "/hello/:string") { (name: String) in
-        return "hey \(name)!"
+    // 2. Use Request data
+    server.route(get: "/request") { (request: Request) in
+        return request.url.path
+    }
+
+    // 3. Match url params
+    server.route(get: "/page/:string") { (name: String) in
+        return "page name: \(name)"
     }
 
     server.route(get: "/user/:integer") { (id: Int) in
-        return "get user where id=\(id)"
+        return "user id: \(id)"
     }
 
-    // 3. Custom model
+    // 4. Custom model
     struct Todo: Codable {
         let name: String
         let done: Bool
     }
 
-    // 3.1. Encode response to json
+    // Encode response to json
     server.route(get: "/todos") {
         return [
             Todo(name: "One", done: true),
@@ -35,27 +46,32 @@ func runServer() throws {
         ]
     }
 
-    // 3.2. Decode request from json | form-urlencoded
+    // Decode request from json or form-urlencoded
     server.route(post: "/todo") { (todo: Todo) in
         return todo
     }
 
-    // 4. Custom url & request model
+    // 5. Use all together
     struct Date: Decodable {
         let day: Int
         let month: String
     }
+
     struct Event: Decodable {
         let name: String
     }
 
-    // 4.1. Pass request & decode url + body
+    // Pass request, match url, decode post data
     server.route(post: "/date/:month/:day")
     { (request: Request, date: Date, event: Event) in
-        return "\(request.url) \(date) \(event)"
+        return """
+            request url: \(request.url)
+            date from url: \(date)
+            model from body: \(event)
+            """
     }
 
-    // 5. Wildcard
+    // 6. Wildcard
     server.route(get: "/*") { (request: Request) in
         return "wildcard: \(request.url.path)"
     }
