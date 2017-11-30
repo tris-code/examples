@@ -18,9 +18,17 @@ func runServer() throws {
 
     var counter = 0
 
+    struct Model: Encodable {
+        let fields: [String]
+
+        init<T: Tarantool.Tuple>(_ tuple: T) {
+            self.fields = tuple.map { String($0 as! MessagePack)! }
+        }
+    }
+
     server.route(get: "/json") {
         let tuples = try space.select(iterator: .all)
-        return try Response(serializing: tuples)
+        return tuples.map { Model($0).fields }
     }
 
     server.route(get: "/*") { (request: Request) in
@@ -43,22 +51,6 @@ func runServer() throws {
     }
 
     try server.start()
-}
-
-extension Response {
-    init<T: Tarantool.Tuple>(serializing tuples: AnySequence<T>) throws {
-        var strings = [String]()
-        for tuple in tuples {
-            let string = tuple.map { String(describing: $0 as! MessagePack) }
-                .joined(separator: ", ")
-            strings.append("[\(string)]")
-        }
-        let result = "[\(strings.joined(separator: ", "))]"
-        var response = Response()
-        response.contentType = ContentType(mediaType: .application(.json))
-        response.rawBody = [UInt8](result)
-        self = response
-    }
 }
 
 @_silgen_name("entry_point")
