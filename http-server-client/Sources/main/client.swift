@@ -13,48 +13,51 @@ func print(_ request: () throws -> Response) {
 }
 
 func runClient() throws {
-    let client = try Client()
-    try client.connect(to: "http://0.0.0.0:8080")
+    let client = try Client(host: "0.0.0.0", port: 8080)
 
     print {
-        try client.get("/hello")
+        try client.get(path: "/hello")
     }
 
     print {
-        try client.get("/привет")
+        try client.get(path: "/привет")
     }
 
     print {
-        try client.get("/request")
+        try client.get(path: "/request")
     }
 
     print {
-        try client.get("/page/news")
+        try client.get(path: "/page/news")
     }
 
     print {
-        try client.get("/user/8")
+        try client.get(path: "/user/8")
     }
 
     print {
-        try client.get("/todos")
+        try client.get(path: "/todos")
     }
 
     struct Todo: Encodable {
         let name: String
         let done: Bool
+
+        init(type: String) {
+            self.name = "sleep sometimes (transfer-encoding: \(type))"
+            self.done = false
+        }
     }
 
     print {
-        try client.post("/todo", json: Todo(
-            name: "sleep sometimes (from json)",
-            done: false))
+        try client.post(path: "/todo", object: Todo(type: "json"))
     }
 
     print {
-        try client.post("/todo", urlEncoded: Todo(
-            name: "sleep sometimes (from urlencoded)",
-            done: false))
+        try client.post(
+            path: "/todo",
+            object: Todo(type: "url encoded"),
+            contentType: .urlEncoded)
     }
 
     struct Event: Encodable {
@@ -62,10 +65,10 @@ func runClient() throws {
     }
 
     print {
-        try client.post("/date/May/8", json: Event(name: "Dance"))
+        try client.post(path: "/date/May/8", object: Event(name: "Dance"))
     }
 
     print {
-        try client.get("/whatdoesmarcelluswallacelooklike")
+        try client.get(path: "/whatdoesmarcelluswallacelooklike")
     }
 }
