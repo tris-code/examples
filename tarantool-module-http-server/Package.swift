@@ -10,20 +10,16 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/http.git",
-            from: "0.4.0"
-        ),
+            .branch("master")),
         .package(
             url: "https://github.com/tris-foundation/messagepack.git",
-            from: "0.4.0"
-        ),
+            .branch("master")),
         .package(
             url: "https://github.com/tris-foundation/tarantool.git",
-            from: "0.4.0"
-        ),
+            .branch("master")),
         .package(
             url: "https://github.com/tris-foundation/log.git",
-            from: "0.4.0"
-        )
+            .branch("master"))
     ],
     targets: [
         .target(

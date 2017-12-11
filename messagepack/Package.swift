@@ -7,8 +7,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/messagepack.git",
-            from: "0.4.0"
-        )
+            .branch("master"))
     ],
     targets: [
         .target(name: "main", dependencies: ["MessagePack"])
