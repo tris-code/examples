@@ -57,9 +57,9 @@ extension BinaryMessage {
 
 class BinaryProtocol {
     let host: String
-    let port: UInt16
+    let port: Int
 
-    init(at host: String, port: UInt16) {
+    init(at host: String, port: Int) {
         self.host = host
         self.port = port
     }

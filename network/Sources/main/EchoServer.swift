@@ -8,9 +8,9 @@ let echoPrefix = [UInt8]("echo: ".utf8)
 
 class EchoServer {
     let host: String
-    let port: UInt16
+    let port: Int
 
-    init(at host: String, port: UInt16) {
+    init(at host: String, port: Int) {
         self.host = host
         self.port = port
     }
