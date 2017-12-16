@@ -24,7 +24,13 @@ let package = Package(
     targets: [
         .target(
             name: "HTTPServerModule",
-            dependencies: ["Server", "AsyncTarantool", "TarantoolModule", "Log"]
+            dependencies: [
+                "Log",
+                "Server",
+                "AsyncTarantool",
+                "TarantoolModule",
+                "MessagePack"
+            ]
         )
     ]
 )

@@ -6,9 +6,6 @@ let package = Package(
     name: "spa-nginx-example",
     dependencies: [
         .package(
-            url: "https://github.com/tris-foundation/platform.git",
-            .branch("master")),
-        .package(
             url: "https://github.com/tris-foundation/http.git",
             .branch("master")),
         .package(
@@ -24,7 +21,6 @@ let package = Package(
             dependencies: [
                 "Log",
                 "Server",
-                "Fiber",
                 "AsyncFiber"
             ]
         )
