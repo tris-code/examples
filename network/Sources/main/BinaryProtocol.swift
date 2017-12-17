@@ -85,7 +85,7 @@ class BinaryProtocol {
         async.task {
             do {
                 var stream = BufferedStream(
-                    stream: NetworkStream(socket: client),
+                    baseStream: NetworkStream(socket: client),
                     capacity: 4096
                 )
 
@@ -117,7 +117,7 @@ class BinaryProtocol {
                     .connect(to: self.host, port: self.port)
 
                 var stream = BufferedStream(
-                    stream: NetworkStream(socket: server),
+                    baseStream: NetworkStream(socket: server),
                     capacity: 4096
                 )
 
