@@ -18,7 +18,7 @@ func runServer() throws {
 
     var counter = 0
 
-    struct Model: Encodable {
+    struct Model {
         let fields: [String]
 
         init<T: Tarantool.Tuple>(_ tuple: T) {
@@ -28,7 +28,7 @@ func runServer() throws {
 
     server.route(get: "/json") {
         let tuples = try space.select(iterator: .all)
-        return tuples.map { Model($0).fields }
+        return try Response(body: tuples.map { Model($0).fields })
     }
 
     server.route(get: "/*") { (request: Request) in
@@ -47,7 +47,7 @@ func runServer() throws {
             return Response(status: .notFound)
         }
 
-        return result[1, as: String.self] ?? "not a string"
+        return try Response(body: result[1, as: String.self] ?? "not a string")
     }
 
     try server.start()
