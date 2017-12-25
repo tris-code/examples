@@ -26,7 +26,7 @@ let package = Package(
             name: "HTTPServerModule",
             dependencies: [
                 "Log",
-                "Server",
+                "HTTP",
                 "AsyncTarantool",
                 "TarantoolModule",
                 "MessagePack"

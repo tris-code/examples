@@ -1,5 +1,5 @@
+import HTTP
 import Async
-import Client
 import Foundation
 
 func print(_ request: () throws -> Response) {

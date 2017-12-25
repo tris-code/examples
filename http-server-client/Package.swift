@@ -20,8 +20,6 @@ let package = Package(
             name: "main",
             dependencies: [
                 "HTTP",
-                "Server",
-                "Client",
                 "Fiber",
                 "AsyncFiber",
                 "AsyncDispatch"

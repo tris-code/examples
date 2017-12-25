@@ -20,7 +20,7 @@ let package = Package(
             name: "main",
             dependencies: [
                 "Log",
-                "Server",
+                "HTTP",
                 "AsyncFiber"
             ]
         )

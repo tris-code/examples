@@ -1,5 +1,5 @@
+import HTTP
 import Async
-import Server
 
 func runServer() throws {
     // 0. Create server

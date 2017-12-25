@@ -1,5 +1,5 @@
 import Log
-import Server
+import HTTP
 import Dispatch
 import AsyncFiber
 import Foundation

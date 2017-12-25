@@ -1,7 +1,7 @@
 import AsyncTarantool
 import TarantoolModule
 import MessagePack
-import Server
+import HTTP
 import Log
 
 struct SomeError: Error {}
