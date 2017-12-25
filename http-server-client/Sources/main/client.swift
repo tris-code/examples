@@ -5,7 +5,7 @@ import Foundation
 func print(_ request: () throws -> Response) {
     do {
         let response = try request()
-        Swift.print(response.body ?? "empty response")
+        Swift.print(response.string ?? "empty response")
         Swift.print("")
     } catch {
         print(error)
@@ -13,7 +13,7 @@ func print(_ request: () throws -> Response) {
 }
 
 func runClient() throws {
-    let client = try Client(host: "0.0.0.0", port: 8080)
+    let client = Client(host: "0.0.0.0", port: 8080)
 
     print {
         try client.get(path: "/hello")
@@ -56,8 +56,8 @@ func runClient() throws {
     print {
         try client.post(
             path: "/todo",
-            object: Todo(type: "url encoded"),
-            contentType: .urlEncoded)
+            object: Todo(type: "form-urlencoded"),
+            contentType: .formURLEncoded)
     }
 
     struct Event: Encodable {
