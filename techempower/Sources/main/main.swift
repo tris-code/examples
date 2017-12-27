@@ -8,22 +8,25 @@ Log.enabled = false
 
 AsyncFiber().registerGlobal()
 
-func startServer() throws {
-    let server = try Server(host: "0.0.0.0", reusePort: 8080)
+func startServer() {
+    do {
+        let server = try Server(host: "0.0.0.0", reusePort: 8080)
 
-    server.route(get: "/plaintext") {
-        return "Hello, World!"
-    }
+        server.route(get: "/plaintext") {
+            return "Hello, World!"
+        }
 
-    struct JSON: Encodable {
-        let message: String
-    }
-    server.route(get: "/json") {
-        return JSON(message: "Hello, World!")
-    }
+        struct JSON: Encodable {
+            let message: String
+        }
+        server.route(get: "/json") {
+            return JSON(message: "Hello, World!")
+        }
 
-    try server.start()
-    async.loop.run()
+        try server.start()
+    } catch {
+        print(String(describing: error))
+    }
 }
 
 #if os(Linux)
@@ -43,13 +46,16 @@ print("running \(threadsCount + 1) thread\(threadsCount != 0 ? "s" : "")")
 
 for _ in 0..<threadsCount {
     Thread {
-        do {
-            try startServer()
-        } catch {
-            print(error)
+        async.task {
+            startServer()
         }
+        async.loop.run()
     }.start()
 }
 #endif
 
-try startServer()
+async.task {
+    startServer()
+}
+
+async.loop.run()
