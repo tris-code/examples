@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "http-example",
+    name: "http-server-client",
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/http.git",
