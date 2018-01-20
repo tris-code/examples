@@ -3,13 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "tarantool-module-example",
-    products: [
-        .library(
-            name: "swift_tarantool_module",
-            type: .dynamic,
-            targets: ["module"])
-    ],
+    name: "tarantool-connector",
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/tarantool.git",
@@ -20,10 +14,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "module",
-            dependencies: ["TarantoolModule", "AsyncTarantool"]),
-        .target(
-            name: "connector",
+            name: "main",
             dependencies: ["TarantoolConnector", "AsyncFiber"])
     ]
 )

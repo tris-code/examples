@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "tarantool-module-http-example",
+    name: "tarantool-module-http",
     products: [
         .library(name: "module", type: .dynamic, targets: ["HTTPServerModule"])
     ],
