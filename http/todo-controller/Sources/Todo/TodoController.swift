@@ -18,10 +18,10 @@ public final class TodoController: Controller, InjectService {
     }
 
     public static func setup(router: ControllerRouter<TodoController>) throws {
-        router.route(get: "/todos", handler: get)
-        router.route(get: "/todos/:integer", handler: getById)
-        router.route(post: "/todos", handler: add)
-        router.route(put: "/todos/:integer", handler: update)
+        router.route(get: "/todos", to: get)
+        router.route(get: "/todos/:integer", to: getById)
+        router.route(post: "/todos", to: add)
+        router.route(put: "/todos/:integer", to: update)
     }
 
     func get() -> [Todo] {
