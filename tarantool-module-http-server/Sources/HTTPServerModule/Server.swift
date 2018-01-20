@@ -4,7 +4,7 @@ import MessagePack
 import HTTP
 import Log
 
-struct SomeError: Error {}
+struct SomeError: Swift.Error {}
 
 func runServer() throws {
     let server = try Server(host: "0.0.0.0", port: 8080)
@@ -31,7 +31,7 @@ func runServer() throws {
         return try Response(body: tuples.map { Model($0).fields })
     }
 
-    server.route(get: "/*") { (request: Request) in
+    server.route(get: "/*") {
         counter += 1
         try transaction {
             try space.replace(["foo", .string("bar \(counter)")])
@@ -56,10 +56,12 @@ func runServer() throws {
 @_silgen_name("entry_point")
 public func main() -> Int {
     AsyncTarantool().registerGlobal()
-    do {
-        try runServer()
-    } catch {
-        Log.error(String(describing: error))
+    async.task {
+        do {
+            try runServer()
+        } catch {
+            Log.error(String(describing: error))
+        }
     }
     return 0
 }
