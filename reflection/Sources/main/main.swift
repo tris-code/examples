@@ -46,6 +46,6 @@ guard case .struct(let metadata) = Metadata(of: User.self) else {
 }
 
 print("fields:")
-for fieldType in metadata.descriptor.fieldTypes {
+for fieldType in metadata.fieldTypes {
     print(fieldType)
 }
