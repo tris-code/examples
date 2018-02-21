@@ -21,9 +21,9 @@ let package = Package(
     targets: [
         .target(
             name: "module",
-            dependencies: ["TarantoolModule", "AsyncTarantool"]),
+            dependencies: ["TarantoolModule"]),
         .target(
             name: "connector",
-            dependencies: ["TarantoolConnector", "AsyncFiber"])
+            dependencies: ["TarantoolConnector", "Fiber"])
     ]
 )

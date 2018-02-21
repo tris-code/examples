@@ -9,9 +9,6 @@ let package = Package(
             url: "https://github.com/tris-foundation/network.git",
             .branch("master")),
         .package(
-            url: "https://github.com/tris-foundation/async.git",
-            .branch("master")),
-        .package(
             url: "https://github.com/tris-foundation/fiber.git",
             .branch("master"))
     ],
@@ -20,9 +17,7 @@ let package = Package(
             name: "main",
             dependencies: [
                 "Fiber",
-                "Network",
-                "AsyncFiber",
-                "AsyncDispatch",
+                "Network"
             ]
         )
     ]

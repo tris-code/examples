@@ -1,12 +1,11 @@
 import Log
 import HTTP
-import Dispatch
-import AsyncFiber
+import Fiber
 import Foundation
 
 Log.enabled = false
 
-AsyncFiber().registerGlobal()
+async.use(Fiber.self)
 
 func startServer() {
     do {

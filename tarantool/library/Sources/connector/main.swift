@@ -1,7 +1,7 @@
-import AsyncFiber
+import Fiber
 import TarantoolConnector
 
-AsyncFiber().registerGlobal()
+async.use(Fiber.self)
 
 async.task {
     do {

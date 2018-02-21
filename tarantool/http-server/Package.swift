@@ -27,7 +27,6 @@ let package = Package(
             dependencies: [
                 "Log",
                 "HTTP",
-                "AsyncTarantool",
                 "TarantoolModule",
                 "MessagePack"
             ]

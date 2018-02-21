@@ -1,4 +1,3 @@
-import AsyncTarantool
 import TarantoolModule
 import MessagePack
 import HTTP
@@ -55,7 +54,7 @@ func runServer() throws {
 
 @_silgen_name("entry_point")
 public func main() -> Int {
-    AsyncTarantool().registerGlobal()
+    async.use(Tarantool.self)
     async.task {
         do {
             try runServer()

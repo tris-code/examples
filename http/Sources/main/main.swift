@@ -1,20 +1,22 @@
 import Log
+import Async
+import Fiber
 import Platform
-import AsyncFiber
-import AsyncDispatch
 
-// AsyncFiber - cooperative multitasking,
+// Fiber - cooperative multitasking,
 // runs new fiber for each connection
 
-// AsyncTarantool - cooperative multitasking,
+// Tarantool - cooperative multitasking,
 // runs on tarantool's implementation of fibers + evloop,
 // you can find an example in tarantool-module-http-server
+// import TarantoolModule; async.use(Tarantool.self)
 
-// AsyncDispatch - preemptive multitasking,
+// Dispatch - preemptive multitasking,
 // spawns Dispatch task for each connection
-// NOTE: for test purposes only
+// NOTE: for test purposes only,
+// import AsyncDispatch; async.use(Dispatch.self)
 
-AsyncFiber().registerGlobal()
+async.use(Fiber.self)
 
 async.task {
     do {

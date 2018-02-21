@@ -1,9 +1,9 @@
 import Log
 import HTTP
-import AsyncFiber
+import Fiber
 import Foundation
 
-AsyncFiber().registerGlobal()
+async.use(Fiber.self)
 
 async.task {
     let server = try! Server(host: "127.0.0.1", port: 9001)

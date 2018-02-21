@@ -21,8 +21,7 @@ let package = Package(
             dependencies: [
                 "HTTP",
                 "Fiber",
-                "AsyncFiber",
-                "AsyncDispatch"
+                "Async"
             ]
         )
     ]

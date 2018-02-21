@@ -1,7 +1,6 @@
+import Async
 import Network
-import Dispatch
 import Platform
-import AsyncFiber
 
 let hello = [UInt8]("Hello, World!".utf8)
 let empty = [UInt8](repeating: 0, count: hello.count + 1)

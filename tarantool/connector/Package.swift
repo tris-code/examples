@@ -15,6 +15,6 @@ let package = Package(
     targets: [
         .target(
             name: "main",
-            dependencies: ["TarantoolConnector", "AsyncFiber"])
+            dependencies: ["TarantoolConnector", "Fiber"])
     ]
 )

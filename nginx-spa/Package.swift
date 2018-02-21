@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "spa-nginx-example",
+    name: "spa-nginx",
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/http.git",
@@ -21,7 +21,7 @@ let package = Package(
             dependencies: [
                 "Log",
                 "HTTP",
-                "AsyncFiber"
+                "Fiber"
             ]
         )
     ]

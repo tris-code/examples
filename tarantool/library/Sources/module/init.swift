@@ -1,5 +1,4 @@
 import CTarantool
-import AsyncTarantool
 import TarantoolModule
 import MessagePack
 
@@ -7,8 +6,8 @@ import MessagePack
 
 @_silgen_name("luaopen_swift_tarantool_module")
 public func open(L: OpaquePointer!) -> Int32 {
-    // use tarantool fibers in async
-    AsyncTarantool().registerGlobal()
+    // use tarantool fibers
+    async.use(Tarantool.self)
 
     // 1. you don't need the rest if you only use native way:
     // return 0
