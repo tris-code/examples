@@ -10,7 +10,7 @@ func runServer() throws {
 
     // ascii
     server.route(get: "/hello") {
-        return "hey there!"
+        return "Hello, World!"
     }
 
     // unicode
