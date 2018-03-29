@@ -2,56 +2,32 @@ import Async
 import Stream
 import Network
 
-struct BinaryMessage {
+struct BinaryMessage: Equatable {
     let code: Int
     let message: String
     let data: [UInt8]
 }
 
-enum BinaryError: Error {
-    case inputError
-    case outputError
-}
-
 extension BinaryMessage {
-    init<T: InputStream>(from stream: inout T) throws {
+    init<T: StreamReader>(from stream: inout T) throws {
         self.code = try stream.read(Int.self)
 
         let messageLength = try stream.read(Int.self)
-        var messageBytes = [UInt8](repeating: 0, count: messageLength)
-        guard try stream.read(to: &messageBytes) == messageLength else {
-            throw BinaryError.inputError
-        }
-        self.message = String(decoding: messageBytes, as: UTF8.self)
+        self.message = try stream.read(count: messageLength, as: String.self)
 
         let dataLength = try stream.read(Int.self)
-        var data = [UInt8](repeating: 0, count: dataLength)
-        guard try stream.read(to: &data) == dataLength else {
-            throw BinaryError.inputError
-        }
-        self.data = data
+        self.data = try stream.read(count: dataLength, as: [UInt8].self)
     }
 
-    func encode<T: OutputStream>(to stream: inout T) throws {
+    func encode<T: StreamWriter>(to stream: inout T) throws {
         try stream.write(code)
 
         let messageBytes = [UInt8](message.utf8)
         try stream.write(messageBytes.count)
-        guard try stream.write(messageBytes) == messageBytes.count else {
-            throw BinaryError.outputError
-        }
+        try stream.write(messageBytes)
 
         try stream.write(data.count)
-        guard try stream.write(data) == data.count else {
-            throw BinaryError.outputError
-        }
-    }
-
-    func reversed() -> BinaryMessage {
-        return BinaryMessage(
-            code: ~code,
-            message: String(message.reversed()),
-            data: data.reversed())
+        try stream.write(data)
     }
 }
 
@@ -86,13 +62,12 @@ class BinaryProtocol {
             do {
                 var stream = BufferedStream(
                     baseStream: NetworkStream(socket: client),
-                    capacity: 4096
-                )
+                    capacity: 4096)
 
                 while true {
                     do {
                         let message = try BinaryMessage(from: &stream)
-                        try message.reversed().encode(to: &stream)
+                        try message.encode(to: &stream)
                         try stream.flush()
                     } catch where error is NetworkStream.Error {
                         // connection closed
@@ -118,18 +93,15 @@ class BinaryProtocol {
 
                 var stream = BufferedStream(
                     baseStream: NetworkStream(socket: server),
-                    capacity: 4096
-                )
+                    capacity: 4096)
 
                 try message.encode(to: &stream)
                 try stream.flush()
 
                 let reply = try BinaryMessage(from: &stream)
-                guard reply.code == ~message.code,
-                    reply.message == String(message.message.reversed()),
-                    reply.data == message.data.reversed() else {
-                        print("binary protocol: invalid reply")
-                        return
+                guard reply == message else {
+                    print("binary protocol: invalid reply")
+                    return
                 }
                 print("binary protocol reply: \(reply)")
             } catch {
