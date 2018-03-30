@@ -3,7 +3,7 @@ import MessagePack
 
 let hey = MessagePack("hey there!")
 let bytes = try MessagePack.encode(hey)
-if let original = String(try MessagePack.decode(bytes: bytes)) {
+if let original = try MessagePack.decode(bytes: bytes).stringValue {
     print("original value: \(original)")
 }
 
