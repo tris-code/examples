@@ -18,10 +18,12 @@ func startServer() {
         struct JSON: Encodable {
             let message: String
         }
+
         server.route(get: "/json") {
             return JSON(message: "Hello, World!")
         }
 
+        print("starting server at \(server.address)")
         try server.start()
     } catch {
         print(String(describing: error))
@@ -29,20 +31,6 @@ func startServer() {
 }
 
 #if os(Linux)
-let threadsCount: Int
-if ProcessInfo.processInfo.arguments.count == 2,
-    let count = Int(ProcessInfo.processInfo.arguments[1]) {
-    guard count >= 1 else {
-        print("thread count should be >= 1")
-        exit(1)
-    }
-    threadsCount = count - 1
-} else {
-    threadsCount = ProcessInfo.processInfo.activeProcessorCount - 1
-}
-
-print("running \(threadsCount + 1) thread\(threadsCount != 0 ? "s" : "")")
-
 for _ in 0..<threadsCount {
     Thread {
         async.task {
