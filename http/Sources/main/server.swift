@@ -1,71 +1,50 @@
 import HTTP
 import Async
 
-func runServer() throws {
-    // 0. Create server
-    let server = try Server(host: "0.0.0.0", port: 8080)
+func registerRoutes(in server: Server) throws {
+    // MARK: Simple
 
-    // 1. Simple routes
-    // supported methods: get, head, post, put, delete, options, all
-
-    // ascii
-    server.route(get: "/hello") {
-        return "Hello, World!"
+    server.route(get: "/ascii") {
+        return "hey there!"
     }
 
-    // unicode
-    server.route(get: "/привет") {
+    server.route(get: "/юникод") {
         return "привет!"
     }
 
-    // 2. Use Request data
-    server.route(get: "/request") { (request: Request) in
-        return request.url.path
+    // MARK: URL Match
+
+    server.route(get: "/swift/string/:string") { (name: String) in
+        return "name: \(name)"
     }
 
-    // 3. Match url params
-    server.route(get: "/page/:string") { (name: String) in
-        return "page name: \(name)"
+    server.route(get: "/swift/int/:integer") { (id: Int) in
+        return "id: \(id)"
     }
 
-    server.route(get: "/user/:integer") { (id: Int) in
-        return "user id: \(id)"
-    }
-
-    // 4. Custom model
-    struct Todo: Codable {
-        let name: String
-        let done: Bool
-    }
-
-    // Encode response to json
-    server.route(get: "/todos") {
-        return [
-            Todo(name: "One", done: true),
-            Todo(name: "Two", done: false)
-        ]
-    }
-
-    // Decode request from json or form-urlencoded
-    server.route(post: "/todo") { (todo: Todo) in
-        return todo
-    }
-
-    // 5. Use all together
     struct Date: Decodable {
         let day: Int
         let month: String
     }
 
+    server.route(get: "/decode-from-url/:month/:day") { (date: Date) in
+        return "date: \(date)"
+    }
+
+    // MARK: Body
+
     struct Event: Decodable {
         let name: String
     }
 
-    // Pass request, match url, decode post data
-    server.route(post: "/date/:month/:day")
-    { (request: Request, date: Date, event: Event) in
+    server.route(post: "/decode-json-or-form-urlencoded") { (event: Event) in
+        return "event: \(event)"
+    }
+
+    // MARK: URL match + Body
+
+    server.route(post: "/date/:month/:day") { (date: Date, event: Event) in
         return """
-            request url: \(request.url)
             date from url: \(date)
             model from body: \(event)
             """
@@ -75,6 +54,4 @@ func runServer() throws {
     server.route(get: "/*") { (request: Request) in
         return "wildcard: \(request.url.path)"
     }
-
-    try server.start()
 }
