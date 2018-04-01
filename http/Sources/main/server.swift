@@ -2,6 +2,7 @@ import HTTP
 import Async
 
 func registerRoutes(in server: Server) throws {
+
     // MARK: Simple
 
     server.route(get: "/ascii") {
@@ -50,8 +51,20 @@ func registerRoutes(in server: Server) throws {
             """
     }
 
-    // 6. Wildcard
+    // MARK: Wildcard
+
     server.route(get: "/*") { (request: Request) in
         return "wildcard: \(request.url.path)"
     }
+
+    // MARK: Application
+
+    let api = Application(basePath: "/api" /* middleware: [] */)
+    api.route(get: "/versions") { return ["v1"] }
+
+    let v1 = Application(basePath: "/v1" /* middleware: [] */)
+    v1.route(get: "/test") { return "/api/v1/test" }
+
+    api.addApplication(v1)
+    server.addApplication(api)
 }

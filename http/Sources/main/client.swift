@@ -27,4 +27,6 @@ func makeRequests(using client: Client) throws {
     print(try client.post(path: "/date/January/1", object: Event(name: "push")))
 
     print(try client.get(path: "/whatdoesmarcelluswallacelooklike"))
+
+    print(try client.get(path: "/api/v1/test"))
 }
