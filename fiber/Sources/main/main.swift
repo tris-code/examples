@@ -1,3 +1,4 @@
+import Time
 import Fiber
 import Foundation
 
@@ -35,14 +36,14 @@ fiber {
 
 // Sleep
 
-let now = Date()
+let now: Time = .now
 
 fiber {
     fiber {
-        sleep(until: now.addingTimeInterval(2))
+        sleep(until: now + 2.s)
         print("fiber 2 woke up")
     }
-    sleep(until: now.addingTimeInterval(1))
+    sleep(until: now + 1.s)
     print("fiber 1 woke up")
 }
 
@@ -51,7 +52,7 @@ fiber {
 fiber {
     for _ in 0..<300 {
         print(".", terminator: "")
-        sleep(until: Date().addingTimeInterval(0.01))
+        sleep(until: .now + 10.ms)
     }
     print("3 sec timeout")
 }
