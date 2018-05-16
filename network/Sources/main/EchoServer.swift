@@ -2,7 +2,6 @@ import Async
 import Network
 import Foundation
 
-let exit = [UInt8]("exit\n".utf8)
 let welcome = [UInt8]("type 'exit' to close the connection\n".utf8)
 let echoPrefix = [UInt8]("echo: ".utf8)
 
@@ -37,10 +36,18 @@ class EchoServer {
             do {
                 _ = try client.send(bytes: welcome)
 
+                func isExit(_ bytes: ArraySlice<UInt8>) -> Bool {
+                    switch String(decoding: bytes, as: UTF8.self) {
+                    case "exit\n": return true
+                    case "exit\r\n": return true
+                    default: return false
+                    }
+                }
+
                 while true {
                     var buffer = [UInt8](repeating: 0, count: 1024)
                     let received = try client.receive(to: &buffer)
-                    guard !buffer[..<received].elementsEqual(exit) else {
+                    guard !isExit(buffer[..<received]) else {
                         // FIXME: should close on deinit
                         try client.close()
                         break
