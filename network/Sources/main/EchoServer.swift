@@ -2,8 +2,8 @@ import Async
 import Network
 import Foundation
 
-let exit = [UInt8]("exit\r\n".utf8)
-let welcome = [UInt8]("type 'exit' to close the connection\r\n".utf8)
+let exit = [UInt8]("exit\n".utf8)
+let welcome = [UInt8]("type 'exit' to close the connection\n".utf8)
 let echoPrefix = [UInt8]("echo: ".utf8)
 
 class EchoServer {
@@ -41,6 +41,8 @@ class EchoServer {
                     var buffer = [UInt8](repeating: 0, count: 1024)
                     let received = try client.receive(to: &buffer)
                     guard !buffer[..<received].elementsEqual(exit) else {
+                        // FIXME: should close on deinit
+                        try client.close()
                         break
                     }
                     let reply = echoPrefix + buffer.prefix(upTo: received)
