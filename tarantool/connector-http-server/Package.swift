@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "tarantool-connector",
+    name: "connector-http-server",
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/tarantool.git",
