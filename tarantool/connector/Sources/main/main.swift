@@ -9,7 +9,7 @@ async.task {
         let iproto = try IProto(host: "127.0.0.1")
         try iproto.auth(username: "tester", password: "tester")
 
-        var schema = try Schema(iproto)
+        let schema = try Schema(iproto)
 
         guard let test = schema.spaces["test"] else {
             print("space test not found")
@@ -37,7 +37,7 @@ async.task {
         // create space & index
         if schema.spaces["new_space"] == nil {
             try iproto.auth(username: "admin", password: "admin")
-            var space = try schema.createSpace(name: "new_space")
+            let space = try schema.createSpace(name: "new_space")
             try space.createIndex(name: "new_index", sequence: true)
         }
         guard let newSpace = schema.spaces["new_space"] else {
