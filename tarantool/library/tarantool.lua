@@ -4,8 +4,9 @@ local swift_module_name = 'swift_tarantool_module'
 
 -- module search paths for box.schema.func.create
 package.cpath =
-    '.build/debug/lib'..swift_module_name..'.so;.build/debug/lib'..swift_module_name..'.dylib;'..
-    '.build/release/lib'..swift_module_name..'.so;.build/release/lib'..swift_module_name..'.dylib;'..
+    'lib'..swift_module_name..'.dylib;'..
+    '.build/x86_64-apple-macosx10.10/debug/lib'..swift_module_name..'.so;.build/x86_64-apple-macosx10.10/debug/lib'..swift_module_name..'.dylib;'..
+    '.build/x86_64-unknown-linux/release/lib'..swift_module_name..'.so;.build/x86_64-unknown-linux/release/lib'..swift_module_name..'.dylib;'..
     package.cpath
 
 os.execute("mkdir -p data")
