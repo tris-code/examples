@@ -69,13 +69,14 @@ class BinaryProtocol {
                         let message = try BinaryMessage(from: &stream)
                         try message.encode(to: &stream)
                         try stream.flush()
-                    } catch where error is NetworkStream.Error {
+                    } catch let error as StreamError
+                        where error == .insufficientData {
                         // connection closed
                         return
                     }
                 }
             } catch {
-                print("binary reply error: \(error)")
+                print("error: \(error)")
             }
         }
     }
