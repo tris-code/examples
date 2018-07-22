@@ -9,14 +9,18 @@ struct BinaryMessage: Equatable {
 }
 
 extension BinaryMessage {
-    init<T: StreamReader>(from stream: inout T) throws {
-        self.code = try stream.read(Int.self)
+    init?<T: StreamReader>(from stream: inout T) throws {
+        do {
+            self.code = try stream.read(Int.self)
 
-        let messageLength = try stream.read(Int.self)
-        self.message = try stream.read(count: messageLength, as: String.self)
+            let messageLength = try stream.read(Int.self)
+            self.message = try stream.read(count: messageLength, as: String.self)
 
-        let dataLength = try stream.read(Int.self)
-        self.data = try stream.read(count: dataLength, as: [UInt8].self)
+            let dataLength = try stream.read(Int.self)
+            self.data = try stream.read(count: dataLength, as: [UInt8].self)
+        } catch let error as StreamError where error == .insufficientData {
+            return nil
+        }
     }
 
     func encode<T: StreamWriter>(to stream: inout T) throws {
@@ -65,15 +69,11 @@ class BinaryProtocol {
                     capacity: 4096)
 
                 while true {
-                    do {
-                        let message = try BinaryMessage(from: &stream)
-                        try message.encode(to: &stream)
-                        try stream.flush()
-                    } catch let error as StreamError
-                        where error == .insufficientData {
-                        // connection closed
+                    guard let message = try BinaryMessage(from: &stream) else {
                         return
                     }
+                    try message.encode(to: &stream)
+                    try stream.flush()
                 }
             } catch {
                 print("error: \(error)")
@@ -99,11 +99,11 @@ class BinaryProtocol {
                 try message.encode(to: &stream)
                 try stream.flush()
 
-                let reply = try BinaryMessage(from: &stream)
-                guard reply == message else {
-                    print("binary protocol: invalid reply")
+                guard let reply = try BinaryMessage(from: &stream) else {
+                    print("empty response")
                     return
                 }
+                assert(reply == message)
                 print("binary protocol reply: \(reply)")
             } catch {
                 print("ping error: \(error)")
