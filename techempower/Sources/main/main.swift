@@ -3,7 +3,7 @@ import HTTP
 import Fiber
 import Foundation
 
-Log.enabled = false
+Log.isEnabled = false
 
 async.use(Fiber.self)
 
