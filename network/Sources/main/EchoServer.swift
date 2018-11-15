@@ -48,8 +48,6 @@ class EchoServer {
                     var buffer = [UInt8](repeating: 0, count: 1024)
                     let received = try client.receive(to: &buffer)
                     guard !isExit(buffer[..<received]) else {
-                        // FIXME: should close on deinit
-                        try client.close()
                         break
                     }
                     let reply = echoPrefix + buffer.prefix(upTo: received)
