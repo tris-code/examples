@@ -20,16 +20,17 @@ let package = Package(
             .branch("master")),
         .package(
             url: "https://github.com/tris-foundation/fiber.git",
-            .branch("master"))
+            .branch("master")),
+        .package(
+            url: "https://github.com/tris-foundation/crypto.git",
+            .branch("master")),
     ],
     targets: [
         .target(
             name: "Blog",
-            dependencies: ["Web"]
-        ),
+            dependencies: ["Web", "UUID"]),
         .target(
             name: "main",
-            dependencies: ["Blog", "Web", "Fiber"]
-        )
+            dependencies: ["Blog", "Web", "Fiber"])
     ]
 )

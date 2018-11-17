@@ -10,7 +10,7 @@
  ******************************************************************************/
 
 import Web
-import struct Foundation.UUID
+import UUID
 
 public final class InMemoryUserRepository: UserRepository, Inject {
     static var users: [User] = []
