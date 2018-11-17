@@ -1,15 +1,5 @@
 import HTTP
 
-func print(_ request: @autoclosure () throws -> Response) {
-    do {
-        let response = try request()
-        Swift.print(response.string ?? "empty response")
-        Swift.print("")
-    } catch {
-        print(error)
-    }
-}
-
 func makeRequests(using client: Client) throws {
     print(try client.get(path: "/ascii"))
     print(try client.get(path: "/юникод"))
@@ -29,4 +19,14 @@ func makeRequests(using client: Client) throws {
     print(try client.get(path: "/whatdoesmarcelluswallacelooklike"))
 
     print(try client.get(path: "/api/v1/test"))
+}
+
+func print(_ request: @autoclosure () throws -> Response) {
+    do {
+        let response = try request()
+        Swift.print(response.string ?? "empty response")
+        Swift.print("")
+    } catch {
+        print(error)
+    }
 }
