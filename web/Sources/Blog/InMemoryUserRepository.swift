@@ -12,9 +12,9 @@
 import Web
 import UUID
 
-public final class InMemoryUserRepository: UserRepository, Inject {
-    static var users: [User] = []
+fileprivate var users: [User] = []
 
+public final class InMemoryUserRepository: UserRepository, Inject {
     public init() {
         _ = add(user: User(
             name: "Admin",
@@ -24,18 +24,17 @@ public final class InMemoryUserRepository: UserRepository, Inject {
     }
 
     public func get(id: String) -> User? {
-        return InMemoryUserRepository.users.first(where: { $0.id == id })
+        return users.first(where: { $0.id == id })
     }
 
     public func add(user: User) -> String {
         var user = user
-        let id = UUID().uuidString
-        user.id = id
-        InMemoryUserRepository.users.append(user)
-        return id
+        user.id = UUID().uuidString
+        users.append(user)
+        return user.id!
     }
 
     public func find(email: String) -> User? {
-        return InMemoryUserRepository.users.first(where: { $0.email == email })
+        return users.first(where: { $0.email == email })
     }
 }
