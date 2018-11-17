@@ -9,17 +9,18 @@
  *                                                                            *
  ******************************************************************************/
 
-import Blog
 import Web
 
-class BlogBootstrap: Bootstrap {
-    func configure(services: Services) throws {
+public class BlogBootstrap: Bootstrap {
+    public init() {}
+
+    public func configure(services: Services) throws {
         try services.register(
             singleton: InMemoryArticleRepository.self,
             as: ArticleRepository.self)
     }
 
-    func configure(application: MVC.Application) throws {
+    public func configure(application: MVC.Application) throws {
         try application.addAuthorization(
             userRepository: InMemoryUserRepository.self,
             cookiesRepository: InMemoryCookiesStorage.self)

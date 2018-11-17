@@ -12,6 +12,7 @@
 import Log
 import Web
 import Fiber
+import Blog
 
 async.use(Fiber.self)
 
