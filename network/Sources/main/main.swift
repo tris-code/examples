@@ -1,5 +1,4 @@
 import Fiber
-import Foundation
 
 async.use(Fiber.self)
 

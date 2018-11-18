@@ -1,5 +1,5 @@
 import Fiber
-import Foundation
+import Platform
 import TarantoolConnector
 
 async.use(Fiber.self)

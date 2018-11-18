@@ -1,6 +1,5 @@
 import Async
 import Network
-import Foundation
 
 let welcome = [UInt8]("type 'exit' to close the connection\n".utf8)
 let echoPrefix = [UInt8]("echo: ".utf8)

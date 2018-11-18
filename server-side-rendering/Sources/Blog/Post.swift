@@ -9,8 +9,6 @@
  *                                                                            *
  ******************************************************************************/
 
-import Foundation
-
 public struct Article: Codable, Equatable {
     public let id: Int
     public var title: String
