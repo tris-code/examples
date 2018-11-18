@@ -1,7 +1,6 @@
 import Log
 import HTTP
 import Fiber
-import Foundation
 
 Log.isEnabled = false
 
