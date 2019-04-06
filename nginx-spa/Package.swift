@@ -5,13 +5,13 @@ let package = Package(
     name: "spa-nginx",
     dependencies: [
         .package(
-            url: "https://github.com/tris-foundation/http.git",
+            url: "https://github.com/tris-code/http.git",
             .branch("master")),
         .package(
-            url: "https://github.com/tris-foundation/fiber.git",
+            url: "https://github.com/tris-code/fiber.git",
             .branch("master")),
         .package(
-            url: "https://github.com/tris-foundation/log.git",
+            url: "https://github.com/tris-code/log.git",
             .branch("master"))
     ],
     targets: [

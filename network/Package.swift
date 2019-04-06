@@ -5,10 +5,10 @@ let package = Package(
     name: "network-example",
     dependencies: [
         .package(
-            url: "https://github.com/tris-foundation/network.git",
+            url: "https://github.com/tris-code/network.git",
             .branch("master")),
         .package(
-            url: "https://github.com/tris-foundation/fiber.git",
+            url: "https://github.com/tris-code/fiber.git",
             .branch("master"))
     ],
     targets: [

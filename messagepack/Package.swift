@@ -5,7 +5,7 @@ let package = Package(
     name: "messagepack-example",
     dependencies: [
         .package(
-            url: "https://github.com/tris-foundation/messagepack.git",
+            url: "https://github.com/tris-code/messagepack.git",
             .branch("master"))
     ],
     targets: [
