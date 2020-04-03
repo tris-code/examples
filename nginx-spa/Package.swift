@@ -2,17 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "spa-nginx",
+    name: "nginx-spa",
+    products: [
+        .executable(name: "nginx-spa", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/http.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/fiber.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/log.git",
-            .branch("master"))
+        .package(path: "../../http"),
+        .package(path: "../../fiber"),
+        .package(path: "../../log"),
     ],
     targets: [
         .target(
