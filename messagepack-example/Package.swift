@@ -3,10 +3,11 @@ import PackageDescription
 
 let package = Package(
     name: "messagepack-example",
+    products: [
+        .executable(name: "messagepack-example", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/messagepack.git",
-            .branch("master"))
+        .package(path: "../../messagepack")
     ],
     targets: [
         .target(name: "main", dependencies: ["MessagePack"])

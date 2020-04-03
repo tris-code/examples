@@ -3,13 +3,12 @@ import PackageDescription
 
 let package = Package(
     name: "http-example",
+    products: [
+        .executable(name: "http-example", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/http.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/fiber.git",
-            .branch("master"))
+        .package(path: "../../http"),
+        .package(path: "../../fiber")
     ],
     targets: [
         .target(
