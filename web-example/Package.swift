@@ -2,9 +2,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "blog",
+    name: "web-example",
     products: [
-        .executable(name: "blog", targets: ["main"])
+        .executable(name: "web-example", targets: ["main"])
     ],
     dependencies: [
         .package(path: "../../web"),
