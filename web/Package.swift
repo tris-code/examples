@@ -3,16 +3,13 @@ import PackageDescription
 
 let package = Package(
     name: "blog",
+    products: [
+        .executable(name: "blog", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/web.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/fiber.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/crypto.git",
-            .branch("master")),
+        .package(path: "../../web"),
+        .package(path: "../../fiber"),
+        .package(path: "../../crypto"),
     ],
     targets: [
         .target(
