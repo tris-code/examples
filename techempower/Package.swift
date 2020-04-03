@@ -3,19 +3,14 @@ import PackageDescription
 
 let package = Package(
     name: "techempower",
+    products: [
+        .executable(name: "techempower", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/platform.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/http.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/fiber.git",
-            .branch("master")),
-        .package(
-            url: "https://github.com/tris-code/log.git",
-            .branch("master"))
+        .package(path: "../../platform"),
+        .package(path: "../../hTTP"),
+        .package(path: "../../fiber"),
+        .package(path: "../../log"),
     ],
     targets: [
         .target(
