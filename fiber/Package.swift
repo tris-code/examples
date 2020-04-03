@@ -3,10 +3,11 @@ import PackageDescription
 
 let package = Package(
     name: "fiber-example",
+    products: [
+        .executable(name: "fiber-example", targets: ["main"])
+    ],
     dependencies: [
-        .package(
-            url: "https://github.com/tris-code/fiber.git",
-            .branch("master"))
+        .package(path: "../../Fiber")
     ],
     targets: [
         .target(name: "main", dependencies: ["Fiber"])
