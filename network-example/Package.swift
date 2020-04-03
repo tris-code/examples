@@ -7,7 +7,7 @@ let package = Package(
         .executable(name: "network-example", targets: ["main"])
     ],
     dependencies: [
-        .package(path: "../../network"),
+        .package(path: "../../aio"),
         .package(path: "../../fiber")
     ],
     targets: [
