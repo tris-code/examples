@@ -7,7 +7,7 @@ let package = Package(
         .executable(name: "fiber-example", targets: ["main"])
     ],
     dependencies: [
-        .package(path: "../../Fiber")
+        .package(path: "../../fiber")
     ],
     targets: [
         .target(name: "main", dependencies: ["Fiber"])
